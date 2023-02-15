@@ -2,7 +2,7 @@ use wasm_bindgen::prelude::*;
 
 #[wasm_bindgen]
 extern "C" {
-    pub fn alert(s: &str);
+    pub fn alert(s: &str); // JavaScript alert function.
 }
 
 #[wasm_bindgen]
