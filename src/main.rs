@@ -7,18 +7,22 @@ fn main() {
 
     let a: [i32; 6] = [10, 20, 30, 40, 50, 60];
 
-    let slice: &[i32] = &a[2..4];
-    println!("s: {slice:?}");
+    let slice: &[i32] = &a[2..];
+    println!("s: {slice:?}"); // :? is for debug.
     sample();
 }
 
 fn sample() {
-    let x: i8 = 15;
-    let y: i16 = 1000;
+  let array = [10, 20, 30];
+  print!("Iterating over array:");
+  for n in array {
+    print!(" {n}");
+  }
+  println!();
 
-    println!("{x} * {y} = {}", multiply(x.into(), y));
-}
-
-fn multiply(x: i16, y: i16) -> i16 {
-    x * y
+  print!("Iterating over range:");
+  for i in 0..array.len() {
+    print!(" {}", array[i])
+  }
+  println!();
 }
