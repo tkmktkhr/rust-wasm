@@ -13,4 +13,5 @@ repository = "https://github.com/tkmktkhr/rust-wasm"
 crate-type = ["cdylib"]
 
 [dependencies]
+dotenv = "0.15.0"
 wasm-bindgen = "0.2"
