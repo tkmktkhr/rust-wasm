@@ -13,16 +13,16 @@ fn main() {
 }
 
 fn sample() {
-  let array = [10, 20, 30];
-  print!("Iterating over array:");
-  for n in array {
-    print!(" {n}");
-  }
-  println!();
+    let array = [10, 20, 30];
+    print!("Iterating over array:");
+    for n in array {
+        print!(" {n}");
+    }
+    println!();
 
-  print!("Iterating over range:");
-  for i in 0..array.len() {
-    print!(" {}", array[i])
-  }
-  println!();
+    print!("Iterating over range:");
+    for i in 0..array.len() {
+        print!(" {}", array[i])
+    }
+    println!();
 }
