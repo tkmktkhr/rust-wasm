@@ -13,6 +13,7 @@ fn main() {
     let slice: &[i32] = &a[2..];
     println!("s: {slice:?}"); // :? is for debug.
     sample();
+    type_inference();
 }
 
 fn sample() {
@@ -76,4 +77,15 @@ fn test_transpose() {
             [103, 203, 303],
         ]
     )
+}
+
+fn type_inference() {
+    let mut v = Vec::new();
+    v.push((10, false));
+    v.push((20, true));
+    println!(" v: {v:?}");
+
+    // let vv = v.iter().collect::<std::collections::HashSet<&(i32, bool)>>(); // don't need to write this.
+    let vv = v.iter().collect::<std::collections::HashSet<_>>();
+    println!("vv: {vv:?}")
 }
