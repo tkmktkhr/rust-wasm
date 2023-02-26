@@ -14,7 +14,7 @@ fn main() {
     println!("s: {slice:?}"); // :? is for debug.
     sample();
     type_inference();
-    // static_constant();
+    static_constant();
 }
 
 // Array, Vec, Slice
@@ -88,7 +88,8 @@ fn type_inference() {
     v.push((String::from(abc), false));
     v.push((String::from(def), true));
     println!(" v: {v:?}");
-    // let first_vec = v[0].0;
+
+    // pointer
     println!("pointer1: {:p}", &v[0].0);
     println!("pointer2: {:p}", &v[0].1);
     println!("pointer3: {:p}", &v[0]);
@@ -99,25 +100,18 @@ fn type_inference() {
     println!("vv: {vv:?}")
 }
 
-// const DIGEST_SIZE: usize = 3;
-// const ZERO: Option<u8> = Some(42);
+const DIGEST_SIZE: usize = 3; // usize is u32 or u64.
+const ZERO: Option<u8> = Some(42);
 
-// fn compute_digest(text: &str) -> [u8; DIGEST_SIZE] {
-//     let mut digest = [ZERO.unwrap_or(0); DIGEST_SIZE];
-//     for (idx, &b) in text.as_bytes().iter().enumerate() {
-//         digest[idx % DIGEST_SIZE] = digest[idx % DIGEST_SIZE].wrapping_add(b);
-//     }
-//     digest
-// }
+fn compute_digest(test_str: &str) -> [u8; DIGEST_SIZE] {
+    let mut digest = [ZERO.unwrap_or(0); DIGEST_SIZE];
+    for (idx, &b) in test_str.as_bytes().iter().enumerate() {
+        digest[idx % DIGEST_SIZE] = digest[idx % DIGEST_SIZE].wrapping_add(b);
+    }
+    digest
+}
 
-// fn static_constant() {
-//     let digest = compute_digest("Hello");
-//     println!("Digest: {digest:?}");
-// }
-
-// const DIGEST_SIZE: usize = 3;
-// const ZERO: Option<u8> = Some(42);
-
-// fn compute_digest(test: &str) -> () {
-
-// }
+fn static_constant() {
+    let digest = compute_digest("Hello");
+    println!("Digest: {digest:?}");
+}
