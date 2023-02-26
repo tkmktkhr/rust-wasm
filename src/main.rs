@@ -3,19 +3,20 @@ use std::fmt::Debug;
 
 fn main() {
     // dereference
-    let mut x: _ = 10;
+    let mut x: _ = 10; // _ i> i32
     let ref_x: &mut i32 = &mut x;
     *ref_x = 20;
     println!("x: {x}");
 
     let a: [i32; 6] = [10, 20, 30, 40, 50, 60];
 
-    let slice: &[_] = &a[2..];
+    let slice: &[_] = &a[2..]; // _ i> i32
     println!("s: {slice:?}"); // :? is for debug.
     sample();
     type_inference();
 }
 
+// Array, Vec, Slice
 fn sample() {
     // matrix practice
     let matrix = [
@@ -89,3 +90,4 @@ fn type_inference() {
     let vv = v.iter().collect::<std::collections::HashSet<_>>();
     println!("vv: {vv:?}")
 }
+
