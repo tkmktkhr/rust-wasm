@@ -15,6 +15,7 @@ fn main() {
     sample();
     type_inference();
     static_constant();
+    banner();
 }
 
 // Array, Vec, Slice
@@ -114,4 +115,10 @@ fn compute_digest(test_str: &str) -> [u8; DIGEST_SIZE] {
 fn static_constant() {
     let digest = compute_digest("Hello");
     println!("Digest: {digest:?}");
+}
+
+static BANNER: &str = "Welcome to RustOS 3.14";
+
+fn banner() {
+    println!("{BANNER}");
 }
