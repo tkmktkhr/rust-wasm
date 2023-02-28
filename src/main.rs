@@ -101,7 +101,7 @@ fn type_inference() {
     println!("vv: {vv:?}")
 }
 
-const DIGEST_SIZE: usize = 3; // usize is u32 or u64.
+const DIGEST_SIZE: usize = 3; // usize is u32 or u64. // inlined upon use.
 const ZERO: Option<u8> = Some(42);
 
 fn compute_digest(test_str: &str) -> [u8; DIGEST_SIZE] {
@@ -117,7 +117,7 @@ fn static_constant() {
     println!("Digest: {digest:?}");
 }
 
-static BANNER: &str = "Welcome to RustOS 3.14";
+static BANNER: &str = "Welcome to RustOS 3.14"; // not inlined upon use and have an actual associated memory location. 
 
 fn banner() {
     println!("{BANNER}");
