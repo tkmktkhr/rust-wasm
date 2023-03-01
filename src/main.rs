@@ -16,6 +16,7 @@ fn main() {
     type_inference();
     static_constant();
     banner();
+    shadowing();
 }
 
 // Array, Vec, Slice
@@ -121,4 +122,19 @@ static BANNER: &str = "Welcome to RustOS 3.14"; // not inlined upon use and have
 
 fn banner() {
     println!("{BANNER}");
+}
+
+fn shadowing() {
+  let a = 10;
+    println!("before: {a}");
+
+    {
+        let a = "hello";
+        println!("inner scope: {a}");
+
+        let a = true;
+        println!("shadowed in inner scope: {a}");
+    }
+
+    println!("after: {a}");
 }
