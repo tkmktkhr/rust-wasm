@@ -118,14 +118,14 @@ fn static_constant() {
     println!("Digest: {digest:?}");
 }
 
-static BANNER: &str = "Welcome to RustOS 3.14"; // not inlined upon use and have an actual associated memory location. 
+static BANNER: &str = "Welcome to RustOS 3.14"; // not inlined upon use and have an actual associated memory location.
 
 fn banner() {
     println!("{BANNER}");
 }
 
 fn shadowing() {
-  let a = 10;
+    let a = 10;
     println!("before: {a}");
 
     {
