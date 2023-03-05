@@ -151,4 +151,8 @@ fn stack_memory() {
         let (capacity, ptr, len): (usize, usize, usize) = std::mem::transmute(s1);
         println!("ptr = {ptr:#x}, len = {len}, capacity = {capacity}");
     }
+    let a = String::from("Hello");
+    let b = a.clone();
+    println!("{:?}, {:p}", a, &a);
+    println!("{:?}, {:p}", b, &b);
 }
