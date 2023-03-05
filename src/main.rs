@@ -17,7 +17,8 @@ fn main() {
     static_constant();
     banner();
     shadowing();
-    stack_memory()
+    stack_memory();
+    copy_clone()
 }
 
 // Array, Vec, Slice
@@ -155,4 +156,19 @@ fn stack_memory() {
     let b = a.clone();
     println!("{:?}, {:p}", a, &a);
     println!("{:?}, {:p}", b, &b);
+}
+
+#[derive(Copy, Clone, Debug)]
+struct Point(i32, i32);
+
+fn copy_clone() {
+    let x = 42;
+    let y = x; // certain types have copy traits.
+    println!("x: {x}");
+    println!("y: {y}");
+
+    let p1 = Point(3, 4);
+    let p2 = p1;
+    println!("p1: {p1:?}, {:p}", &p1);
+    println!("p2: {p2:?}, {:p}", &p2);
 }
