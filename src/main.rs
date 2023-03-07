@@ -19,7 +19,8 @@ fn main() {
     shadowing();
     stack_memory();
     copy_clone();
-    life_time()
+    life_time_1();
+    life_time_2()
 }
 
 // Array, Vec, Slice
@@ -185,10 +186,27 @@ fn left_most<'a>(p1: &'a Point, p2: &'a Point) -> &'a Point {
     }
 }
 
-fn life_time() {
+fn life_time_1() {
     let p1: Point = Point(10, 10);
     let p2: Point = Point(20, 20);
     let p3: &Point = left_most(&p1, &p2);
     println!("left-most point: {:?}", p3);
     println!("pointer: {:p},{:p},{:p}", &p1, &p2, &p3);
+}
+
+#[derive(Debug)]
+struct Highlight<'doc>(&'doc str);
+
+fn erase(text: String) {
+    println!("Bye {text}!");
+}
+
+fn life_time_2() {
+    let text = String::from("The quick brown fox jumps over the lazy dog.");
+    let fox = Highlight(&text[4..19]);
+    let dog = Highlight(&text[35..43]);
+    // erase(text); // not ok
+    println!("{fox:?}");
+    println!("{dog:?}");
+    erase(text) // ok
 }
