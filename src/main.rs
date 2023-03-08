@@ -1,6 +1,9 @@
 use std::convert::AsRef;
 use std::fmt::Debug;
 
+mod library_mod;
+// mod library_mod::library::{Library, Book};
+
 fn main() {
     // dereference
     let mut x: _ = 10; // _ i> i32
@@ -20,7 +23,13 @@ fn main() {
     stack_memory();
     copy_clone();
     life_time_1();
-    life_time_2()
+    life_time_2();
+    library();
+    let v: Vec<i8> = vec![10, 20, 30];
+    let mut iter = v.iter();
+
+    let v0: Option<{..}> = iter.next();
+    println!("v0: {v0:?}");
 }
 
 // Array, Vec, Slice
@@ -209,4 +218,26 @@ fn life_time_2() {
     println!("{fox:?}");
     println!("{dog:?}");
     erase(text) // ok
+}
+
+fn library() {
+    let mut library = library_mod::library::Library::new();
+
+    let favorite_book = library_mod::library::Book::new("A sample book", 1985);
+    println!(
+        "Our favorite book {} should go in our library.",
+        favorite_book
+    );
+    println!("1: {:p}", &library); // same pointer
+    library.add_book(favorite_book);
+    println!("3: {:p}", &library); // same pointer
+    println!("Our library: {library:?}.");
+
+    let favorite_book_2 = library_mod::library::Book::new("A sample book 2", 1986);
+    library.add_book(favorite_book_2); // same pointer
+    println!("Our library 2: {library:?}.");
+
+    for book in library.books {
+        println!("{book}");
+    }
 }
