@@ -24,7 +24,8 @@ fn main() {
     life_time_1();
     life_time_2();
     library();
-    iterator()
+    iterator();
+    into_iterator()
 }
 
 // Array, Vec, Slice
@@ -241,6 +242,18 @@ fn iterator() {
     let v: Vec<i8> = vec![10, 20, 30];
     let mut iter = v.iter();
 
-    let v0: Option<_> = iter.next();
-    println!("v0: {v0:?}")
+    let v0: Option<&i8> = iter.next(); // return reference.
+    println!("v0: {v0:?}");
+    println!("v[1]: {:?}", iter.next());
+    println!("v[2]: {:?}", iter.next());
+    println!("v[3]: {:?}", iter.next())
+}
+
+fn into_iterator() {
+    let v: Vec<String> = vec![String::from("foo"), String::from("bar")];
+    let mut iter = v.into_iter(); // return value.
+    let v0: Option<String> = iter.next();
+    println!("v0: {v0:?}");
+    println!("v1: {:?}", iter.next());
+    println!("v2: {:?}", iter.next());
 }
