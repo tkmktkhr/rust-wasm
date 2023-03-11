@@ -2,7 +2,6 @@ use std::convert::AsRef;
 use std::fmt::Debug;
 
 mod library_mod;
-// mod library_mod::library::{Library, Book};
 
 fn main() {
     // dereference
@@ -25,11 +24,7 @@ fn main() {
     life_time_1();
     life_time_2();
     library();
-    let v: Vec<i8> = vec![10, 20, 30];
-    let mut iter = v.iter();
-
-    let v0: Option<{..}> = iter.next();
-    println!("v0: {v0:?}");
+    iterator()
 }
 
 // Array, Vec, Slice
@@ -240,4 +235,12 @@ fn library() {
     for book in library.books {
         println!("{book}");
     }
+}
+
+fn iterator() {
+    let v: Vec<i8> = vec![10, 20, 30];
+    let mut iter = v.iter();
+
+    let v0: Option<_> = iter.next();
+    println!("v0: {v0:?}")
 }
