@@ -26,7 +26,8 @@ fn main() {
   library();
   iterator();
   into_iterator();
-  sample_struct()
+  sample_struct();
+  new_type_idiom()
 }
 
 // Array, Vec, Slice
@@ -280,4 +281,31 @@ fn sample_struct() {
     ..peter
   };
   println!("{} is {} years old", jackie.name, jackie.age);
+}
+
+struct Years(i64);
+struct Days(i64);
+
+impl Years {
+  pub fn to_days(&self) -> Days {
+    Days(self.0 * 365)
+  }
+}
+
+impl Days {
+  pub fn to_years(&self) -> Years {
+    Years(self.0 / 365)
+  }
+}
+
+fn old_enough(age: &Years) -> bool {
+  age.0 >= 18
+}
+
+fn new_type_idiom() {
+  let age = Years(5);
+  let age_days = age.to_days();
+
+  println!("Old enough {}", old_enough(&age));
+  println!("Old enough {}", old_enough(&age_days.to_years()));
 }
