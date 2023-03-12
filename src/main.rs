@@ -25,7 +25,8 @@ fn main() {
   life_time_2();
   library();
   iterator();
-  into_iterator()
+  into_iterator();
+  sample_struct()
 }
 
 // Array, Vec, Slice
@@ -258,36 +259,24 @@ fn into_iterator() {
   println!("v2: {:?}", iter.next());
 }
 
-// struct Person {
-//   name: String,
-//   age: u8,
-// }
+struct Person {
+  name: String,
+  age: u8,
+}
 
-// fn sample_struct() {
-//   let mut peter = Person {
-//     name: String::from("peter"),
-//     age: 27,
-//   };
-//   println!("{} is {} years old", peter.name, peter.age);
+fn sample_struct() {
+  let mut peter = Person {
+    name: String::from("peter"),
+    age: 27,
+  };
+  println!("{} is {} years old", peter.name, peter.age);
 
-//   peter.age = 28;
-//   println!("{} is {} years old", peter.name, peter.age);
+  peter.age = 28;
+  println!("{} is {} years old", peter.name, peter.age);
 
-// }
-
-// fn main() {
-//   let mut peter = Person {
-//       name: String::from("Peter"),
-//       age: 27,
-//   };
-//   println!("{} is {} years old", peter.name, peter.age);
-
-//   peter.age = 28;
-//   println!("{} is {} years old", peter.name, peter.age);
-
-//   let jackie = Person {
-//       name: String::from("Jackie"),
-//       ..peter
-//   };
-//   println!("{} is {} years old", jackie.name, jackie.age);
-// }
+  let jackie = Person {
+    name: String::from("jackie"),
+    ..peter
+  };
+  println!("{} is {} years old", jackie.name, jackie.age);
+}
