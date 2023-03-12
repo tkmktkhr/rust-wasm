@@ -167,7 +167,7 @@ fn stack_memory() {
 }
 
 #[derive(Copy, Clone, Debug)]
-struct Point(i32, i32);
+struct Point(i32, i32); // Tuple struct
 
 fn copy_clone() {
   let x = 42;
