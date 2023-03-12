@@ -27,7 +27,8 @@ fn main() {
   iterator();
   into_iterator();
   sample_struct();
-  new_type_idiom()
+  new_type_idiom();
+  create_default()
 }
 
 // Array, Vec, Slice
@@ -260,7 +261,7 @@ fn into_iterator() {
   println!("v1: {:?}", iter.next());
   println!("v2: {:?}", iter.next());
 }
-
+#[derive(Debug)]
 struct Person {
   name: String,
   age: u8,
@@ -308,4 +309,26 @@ fn new_type_idiom() {
 
   println!("Old enough {}", old_enough(&age));
   println!("Old enough {}", old_enough(&age_days.to_years()));
+}
+
+impl Default for Person {
+  fn default() -> Self {
+    Person {
+      name: "Default_Name".to_string(),
+      age: 0,
+    }
+  }
+}
+
+fn create_default() {
+  let tmp = Person {
+    ..Default::default()
+  };
+  println!("{tmp:#?}");
+
+  let tmp = Person {
+    name: "sample_name".to_string(),
+    ..Default::default()
+  };
+  println!("{tmp:#?}");
 }
