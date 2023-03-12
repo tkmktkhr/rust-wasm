@@ -181,6 +181,7 @@ fn copy_clone() {
   println!("p2: {p2:?}, {:p}", &p2);
 }
 
+// already exists in line 169.
 // #[derive(Debug)]
 // struct Point(i32, i32);
 
