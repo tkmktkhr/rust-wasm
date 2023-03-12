@@ -28,7 +28,8 @@ fn main() {
   into_iterator();
   sample_struct();
   new_type_idiom();
-  create_default()
+  create_default();
+  sample_basic_enum()
 }
 
 // Array, Vec, Slice
@@ -331,4 +332,23 @@ fn create_default() {
     ..Default::default()
   };
   println!("{tmp:#?}");
+}
+
+#[derive(Debug)]
+enum CoinFlip {
+  Heads, // 0
+  Tails, // 1
+}
+
+fn flip_coin() -> CoinFlip {
+  let random_number = 4; // should be random number.
+  if random_number % 2 == 0 {
+    return CoinFlip::Heads;
+  } else {
+    return CoinFlip::Tails;
+  }
+}
+
+fn sample_basic_enum() {
+  println!("{:?}", flip_coin())
 }
