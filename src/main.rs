@@ -354,18 +354,20 @@ fn sample_basic_enum() {
   println!("{:?}", flip_coin())
 }
 
+#[derive(Debug)]
 enum WebEvent {
   PageLoad,                 // Variant without payload
   KeyPress(char),           // Tuple struct variant
   Click { x: i64, y: i64 }, // Full struct variant
 }
 
-#[rustfmt::skip]
+// #[rustfmt::skip]
 fn inspect(event: WebEvent) {
+  println!("{event:#?}");
   match event {
     WebEvent::PageLoad => println!("page loaded"),
-          WebEvent::KeyPress(c)    => println!("pressed '{c}'"),
-      WebEvent::Click { x, y } => println!("clicked at x={x}, y={y}"),
+    WebEvent::KeyPress(c) => println!("pressed '{c}'"),
+    WebEvent::Click { x, y } => println!("clicked at x={x}, y={y}"),
   }
 }
 
