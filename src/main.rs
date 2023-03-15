@@ -30,7 +30,8 @@ fn main() {
   new_type_idiom();
   create_default();
   sample_basic_enum();
-  variant_payloads()
+  variant_payloads();
+  enum_size()
 }
 
 // Array, Vec, Slice
@@ -379,4 +380,26 @@ fn variant_payloads() {
   inspect(load);
   inspect(press);
   inspect(click);
+}
+
+use std::mem::{align_of, size_of};
+
+macro_rules! dbg_size {
+  ($t:ty) => {
+    println!(
+      "{}: size {} bytes, align: {} bytes",
+      stringify!($t),
+      size_of::<$t>(),
+      align_of::<$t>()
+    )
+  };
+}
+
+enum Foo {
+  A,
+  B,
+}
+
+fn enum_size() {
+  dbg_size!(Foo);
 }
