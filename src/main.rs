@@ -400,6 +400,16 @@ enum Foo {
   B,
 }
 
+#[repr(u32)]
+enum Bar {
+  A,
+  B = 1000,
+  C,
+}
+
 fn enum_size() {
   dbg_size!(Foo);
+  println!("A: {}", Bar::A as u32);
+  println!("B: {}", Bar::B as u32);
+  println!("C: {}", Bar::C as u32);
 }
