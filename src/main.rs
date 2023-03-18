@@ -31,7 +31,8 @@ fn main() {
   create_default();
   sample_basic_enum();
   variant_payloads();
-  enum_size()
+  enum_size();
+  method()
 }
 
 // Array, Vec, Slice
@@ -412,4 +413,18 @@ fn enum_size() {
   println!("A: {}", Bar::A as u32);
   println!("B: {}", Bar::B as u32);
   println!("C: {}", Bar::C as u32);
+}
+
+impl Person {
+  fn say_hello(&self) {
+    println!("Hello, my name is {}", self.name)
+  }
+}
+
+fn method() {
+  let peter = Person {
+    name: String::from("Peter"),
+    age: 27,
+  };
+  peter.say_hello();
 }
