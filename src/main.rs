@@ -4,7 +4,7 @@ use std::fmt::Debug;
 mod library_mod;
 mod race;
 
-// use race::race;
+use race::fn_race;
 
 fn main() {
   // dereference
@@ -36,7 +36,7 @@ fn main() {
   variant_payloads();
   enum_size();
   method();
-  // race()
+  fn_race()
 }
 
 // Array, Vec, Slice
