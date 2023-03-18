@@ -315,6 +315,11 @@ fn new_type_idiom() {
   println!("Old enough {}", old_enough(&age_days.to_years()));
 }
 
+// This is unnecessary for the bellow.
+trait Default {
+  fn default() -> Self;
+}
+
 impl Default for Person {
   fn default() -> Self {
     Person {
