@@ -36,7 +36,8 @@ fn main() {
   variant_payloads();
   enum_size();
   method();
-  fn_race()
+  fn_race();
+  pattern_matching()
 }
 
 // Array, Vec, Slice
@@ -436,4 +437,15 @@ fn method() {
     age: 27,
   };
   peter.say_hello();
+}
+
+fn pattern_matching() {
+  let input = 'x';
+
+  match input {
+    'q' => println!("Quitting"),
+    'a' | 's' | 'w' | 'd' => println!("Moving around"),
+    '0'..='9' => println!("Number input"),
+    _ => println!("Something else"),
+  }
 }
