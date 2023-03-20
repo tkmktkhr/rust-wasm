@@ -37,7 +37,8 @@ fn main() {
   enum_size();
   method();
   fn_race();
-  pattern_matching()
+  pattern_matching();
+  destructure_enum()
 }
 
 // Array, Vec, Slice
@@ -440,12 +441,33 @@ fn method() {
 }
 
 fn pattern_matching() {
-  let input = 'x';
+  let input = '9';
 
   match input {
     'q' => println!("Quitting"),
     'a' | 's' | 'w' | 'd' => println!("Moving around"),
     '0'..='9' => println!("Number input"),
     _ => println!("Something else"),
+  }
+}
+
+enum Result {
+  Ok(i32),
+  Err(String),
+}
+
+fn divide_in_two(n: i32) -> Result {
+  if n % 2 == 0 {
+    Result::Ok(n / 2)
+  } else {
+    Result::Err(format!("cannot divide {n} into two equal parts"))
+  }
+}
+
+fn destructure_enum() {
+  let n = 101;
+  match divide_in_two(n) {
+    Result::Ok(half) => println!("{n} divided in two is {half}"),
+    Result::Err(msg) => println!("sorry, an error happened: {msg}"),
   }
 }
