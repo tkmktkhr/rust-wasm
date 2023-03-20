@@ -38,7 +38,8 @@ fn main() {
   method();
   fn_race();
   pattern_matching();
-  destructure_enum()
+  destructure_enum();
+  destructure_struct()
 }
 
 // Array, Vec, Slice
@@ -407,7 +408,7 @@ macro_rules! dbg_size {
   };
 }
 
-enum Foo {
+enum FooEnum {
   A,
   B,
 }
@@ -420,7 +421,7 @@ enum Bar {
 }
 
 fn enum_size() {
-  dbg_size!(Foo);
+  dbg_size!(FooEnum);
   println!("A: {}", Bar::A as u32);
   println!("B: {}", Bar::B as u32);
   println!("C: {}", Bar::C as u32);
@@ -470,4 +471,28 @@ fn destructure_enum() {
     Result::Ok(half) => println!("{n} divided in two is {half}"),
     Result::Err(msg) => println!("sorry, an error happened: {msg}"),
   }
+}
+
+struct Foo {
+  x: (u32, u32),
+  y: u32,
+}
+
+fn destructure_struct() {
+  let foo = Foo { x: (1, 2), y: 4 };
+  let res = match foo {
+    Foo { x: (1, b), y } => {
+      println!("x.0 = 1, b = {b}, y = {y}");
+      y
+    }
+    Foo { y: 2, x: i } => {
+      println!("y = 2, x = {i:?}");
+      i.1
+    }
+    Foo { y, .. } => {
+      println!("y = {y}, other fields were ignored");
+      y
+    }
+  };
+  println!("result is {res:?}")
 }
