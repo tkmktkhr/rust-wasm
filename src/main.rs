@@ -40,7 +40,8 @@ fn main() {
   pattern_matching();
   destructure_enum();
   destructure_struct();
-  destructure_tuple()
+  destructure_tuple();
+  closure()
 }
 
 // Array, Vec, Slice
@@ -507,4 +508,11 @@ fn destructure_tuple() {
     [1, ..] => println!("First is 1 and the rest were ignored"),
     _ => println!("All elements were ignored"),
   }
+}
+
+fn closure() {
+  let chunks: Vec<_> = (0..3).map(|ii| (0..30).skip(ii).step_by(3)).collect();
+  println!("{chunks:?}");
+
+
 }
