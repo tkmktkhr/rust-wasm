@@ -511,13 +511,15 @@ fn destructure_tuple() {
 }
 
 fn closure() {
-  let chunks: Vec<_> = (0..3).map(|ii| (0..30).skip(ii).step_by(3)).collect();
+  // let chunks: Vec<_> = (0..3).map(|ii| (0..30).skip(ii).step_by(3)).collect();
+  let mut chunks = (0..3).map(|ii| (0..30).skip(ii).step_by(3)); // executed until it needs to be.
   println!("{chunks:?}");
+  println!("{:?}", chunks.next());
 
+  // Iterator
   let a = [1, 2, 3];
   let mut a_iter = a.iter();
   println!("{a_iter:?}");
   let a_iter_next = a_iter.next();
-  println!("{a_iter_next:?}"); // 
-
+  println!("{a_iter_next:?}"); // Some(1)
 }
