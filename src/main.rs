@@ -41,7 +41,8 @@ fn main() {
   destructure_enum();
   destructure_struct();
   destructure_tuple();
-  closure()
+  closure();
+  destructure_array()
 }
 
 // Array, Vec, Slice
@@ -522,4 +523,17 @@ fn closure() {
   println!("{a_iter:?}");
   let a_iter_next = a_iter.next();
   println!("{a_iter_next:?}"); // Some(1)
+}
+
+fn destructure_array() {
+  let triple = [2, -2, 3, 1];
+  println!("Tell me about {triple:?}");
+
+  match triple {
+    [0, y, z, ..] => println!("First is 0, y = {y}, and z = {z}"),
+    [1, ..] => println!("First is 1 and the rest were ignored"),
+    // [.., 1, ..] => println!("Middle is 1 and the rest were ignored"), // can only be used once per slice pattern
+    [.., 1] => println!("Last is 1 and the rest were ignored"),
+    _ => println!("All elements were ignored"),
+  }
 }
