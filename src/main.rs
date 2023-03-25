@@ -512,10 +512,14 @@ fn destructure_tuple() {
 }
 
 fn closure() {
+  const N_THREADS: usize = 3;
+
+  let series_range = 0..30;
+  let add = 1;
   // let chunks: Vec<_> = (0..3).map(|ii| (0..30).skip(ii).step_by(3)).collect();
-  let mut chunks = (0..3).map(|ii| (0..30).skip(ii).step_by(3)); // executed until it needs to be.
+  let mut chunks = (0..N_THREADS).map(|ii| series_range.clone().skip(ii).step_by(N_THREADS)); // executed until it needs to be.
   println!("{chunks:?}");
-  println!("{:?}", chunks.next());
+  // println!("{:?}", chunks.next());
 
   // Iterator
   let a = [1, 2, 3];
@@ -523,6 +527,17 @@ fn closure() {
   println!("{a_iter:?}");
   let a_iter_next = a_iter.next();
   println!("{a_iter_next:?}"); // Some(1)
+
+  let handles: Vec<_> = chunks
+    .map(|vv| {
+      std::thread::spawn(move || {
+        vv.for_each(|nn| print! {"{}+{}={}; ", nn, add, nn + add});
+      })
+    })
+    .collect();
+
+  handles.into_iter().for_each(|hh| hh.join().unwrap());
+  println!("---END");
 }
 
 fn destructure_array() {
