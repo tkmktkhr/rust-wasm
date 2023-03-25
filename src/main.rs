@@ -510,7 +510,7 @@ fn destructure_tuple() {
     _ => println!("All elements were ignored"),
   }
 }
-
+// multi thread
 fn closure() {
   const N_THREADS: usize = 3;
 
@@ -519,7 +519,7 @@ fn closure() {
   // let chunks: Vec<_> = (0..3).map(|ii| (0..30).skip(ii).step_by(3)).collect();
   let mut chunks = (0..N_THREADS).map(|ii| series_range.clone().skip(ii).step_by(N_THREADS)); // executed until it needs to be.
   println!("{chunks:?}");
-  // println!("{:?}", chunks.next());
+  // println!("{:?}", chunks.next()); // first element of array is skipped.
 
   // Iterator
   let a = [1, 2, 3];
