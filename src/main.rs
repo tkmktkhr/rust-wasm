@@ -42,7 +42,8 @@ fn main() {
   destructure_struct();
   destructure_tuple();
   closure();
-  destructure_array()
+  destructure_array();
+  match_guards()
 }
 
 // Array, Vec, Slice
@@ -550,5 +551,18 @@ fn destructure_array() {
     // [.., 1, ..] => println!("Middle is 1 and the rest were ignored"), // can only be used once per slice pattern
     [.., 1] => println!("Last is 1 and the rest were ignored"),
     _ => println!("All elements were ignored"),
+  }
+}
+
+fn match_guards() {
+  let pair = (2, -2);
+  println!("Tell me about {pair:?}");
+
+  match pair {
+    (x, y) if x == y => println!("These are twins"),
+    (x, y) if x == y => println!("These are twins"),
+    (x, y) if x + y == 0 => println!("Antimatter, kaboom!"),
+    (x, _) if x % 2 == 1 => println!("The first one is odd"),
+    _ => println!("No correlation..."),
   }
 }
