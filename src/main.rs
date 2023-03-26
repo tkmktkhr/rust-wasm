@@ -43,7 +43,8 @@ fn main() {
   destructure_tuple();
   closure();
   destructure_array();
-  match_guards()
+  match_guards();
+  block();
 }
 
 // Array, Vec, Slice
@@ -560,9 +561,22 @@ fn match_guards() {
 
   match pair {
     (x, y) if x == y => println!("These are twins"),
-    (x, y) if x == y => println!("These are twins"),
     (x, y) if x + y == 0 => println!("Antimatter, kaboom!"),
     (x, _) if x % 2 == 1 => println!("The first one is odd"),
     _ => println!("No correlation..."),
   }
+}
+
+fn block() {
+  let x = {
+    let y = 10;
+    println!("y: {y}");
+    let z = {
+      let w = { 3 + 4 };
+      println!("y: {y}");
+      y * w
+    };
+    z - y
+  };
+  println!("x: {x}");
 }
