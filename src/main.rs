@@ -45,7 +45,8 @@ fn main() {
   destructure_array();
   match_guards();
   block();
-  if_let()
+  if_let();
+  endless_loop();
 }
 
 // Array, Vec, Slice
@@ -616,4 +617,17 @@ fn if_let() {
     // The condition evaluated false. This branch is the default:
     println!("I don't like letters. Let's go with an emoticon :)!");
   }
+}
+
+fn endless_loop() {
+  let mut x = 10;
+
+  loop {
+    x = if x % 2 == 0 { x / 2 } else { 3 * x + 1 };
+    if x == 1 {
+      break;
+    }
+  }
+
+  println!("Final x: {x}");
 }
