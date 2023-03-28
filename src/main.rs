@@ -3,6 +3,7 @@ use std::fmt::Debug;
 
 mod library_mod;
 mod race;
+// mod utils;
 
 use race::fn_race;
 
@@ -47,6 +48,9 @@ fn main() {
   block();
   if_let();
   endless_loop();
+  break_continue();
+
+  // utils::tools::tool();
 }
 
 // Array, Vec, Slice
@@ -630,4 +634,21 @@ fn endless_loop() {
   }
 
   println!("Final x: {x}");
+}
+
+fn break_continue() {
+  let v = vec![10, 20, 30];
+  let mut iter = v.into_iter();
+  // 'outer -> label
+  'outer: while let Some(x) = iter.next() {
+    println!("x: {x}");
+    let mut i = 0;
+    while i < x {
+      println!("x: {x}, i: {i}");
+      i += 1;
+      if i == 3 {
+        break 'outer;
+      }
+    }
+  }
 }
