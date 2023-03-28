@@ -3,7 +3,7 @@ use std::fmt::Debug;
 
 mod library_mod;
 mod race;
-// mod utils;
+mod utils;
 
 use race::fn_race;
 
@@ -50,7 +50,7 @@ fn main() {
   endless_loop();
   break_continue();
 
-  // utils::tools::tool();
+  utils::tools::tool();
 }
 
 // Array, Vec, Slice
