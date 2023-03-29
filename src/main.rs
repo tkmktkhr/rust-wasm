@@ -51,6 +51,7 @@ fn main() {
   break_continue();
 
   utils::tools::tool();
+  utils::tools::option_result();
 }
 
 // Array, Vec, Slice
