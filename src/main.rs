@@ -52,6 +52,7 @@ fn main() {
 
   utils::tools::tool();
   utils::tools::option_result();
+  utils::tools::string_sample();
 }
 
 // Array, Vec, Slice
