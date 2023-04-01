@@ -16,12 +16,13 @@ pub mod tools {
   pub fn string_sample() {
     let mut s1 = String::new();
     s1.push_str("Hello");
-    // String::len returns the size of the String in bytes
+    // String::len returns the size of the String in bytes (which can be different from its length in characters).
     println!("s1: len = {}, capacity = {}", s1.len(), s1.capacity());
 
     let mut s2 = String::with_capacity(s1.len() + 1);
-    s2.push_str(&s1);
-    s2.push('!');
+    s2.push_str(&s1); // push_str: add string literal.
+    s2.push('!'); // push: add only 1 character.
+                  // s2.push('?'); // s2: len = 7, capacity = 12
     println!("s2: len = {}, capacity = {}", s2.len(), s2.capacity());
 
     let s3 = String::from("🇨🇭");
