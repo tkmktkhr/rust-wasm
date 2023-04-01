@@ -22,7 +22,7 @@ pub mod tools {
     let mut s2 = String::with_capacity(s1.len() + 1);
     s2.push_str(&s1); // push_str: add string literal.
     s2.push('!'); // push: add only 1 character.
-                  // s2.push('?'); // s2: len = 7, capacity = 12
+    // s2.push('?'); // s2: len = 7, capacity = 12
     println!("s2: len = {}, capacity = {}", s2.len(), s2.capacity());
 
     let s3 = String::from("🇨🇭");
@@ -31,5 +31,13 @@ pub mod tools {
       s3.len(),
       s3.chars().count()
     );
+  }
+
+  pub fn vec_sample() {
+    // Vec is a type of collection, along with String and HashMap.
+    // The data it contains is stored on the heap. This means the amount of data doesn’t need to be known at compile time. It can grow or shrink at runtime.
+    let mut v1 = Vec::new();
+    v1.push(42);
+    println!("v1: len = {}, capacity = {}", v1.len(), v1.capacity());
   }
 }
