@@ -22,7 +22,7 @@ pub mod tools {
     let mut s2 = String::with_capacity(s1.len() + 1);
     s2.push_str(&s1); // push_str: add string literal.
     s2.push('!'); // push: add only 1 character.
-    // s2.push('?'); // s2: len = 7, capacity = 12
+                  // s2.push('?'); // s2: len = 7, capacity = 12
     println!("s2: len = {}, capacity = {}", s2.len(), s2.capacity());
 
     let s3 = String::from("🇨🇭");
@@ -47,7 +47,7 @@ pub mod tools {
     println!("v2: len = {}, capacity = {}", v2.len(), v2.capacity());
 
     // Canonical macro to initialize a vector with elements.
-    let mut v3 = vec![0,0,1,2,3,4];
+    let mut v3 = vec![0, 0, 1, 2, 3, 4];
 
     v3.retain(|x| x % 2 == 0); // if the content is true, pick it up.
     println!("{v3:?}");
@@ -55,5 +55,41 @@ pub mod tools {
     // Remove consecutive duplicates.
     v3.dedup();
     println!("{v3:?}");
+  }
+
+  pub fn hash_map() {
+    use std::collections::HashMap;
+
+    let mut page_counts = HashMap::new();
+    page_counts.insert("Adventures of Huckleberry Finn".to_string(), 207);
+    page_counts.insert("Grimms' Fairy Tales".to_string(), 751);
+    page_counts.insert("Pride and Prejudice".to_string(), 303);
+
+    if !page_counts.contains_key("Les Misérables") {
+      println!(
+        "We know about {} books, but not Les Misérables.",
+        page_counts.len()
+      );
+    }
+
+    // for book in ["Pride and Prejudice", "Alice's Adventure in Wonderland"] {
+    //   match page_counts.get(book) {
+    //     Some(count) => println!("{book}: {count} pages"),
+    //     None => println!("{book} is unknown.")
+    //   }
+    // }
+
+    // // Use the .entry() method to insert a value if nothing is found.
+    // for book in ["Pride and Prejudice", "Alice's Adventure in Wonderland"] {
+    //     let page_count: &mut i32 = page_counts.entry(book.to_string()).or_insert(0);
+    //     *page_count += 1;
+    // }
+
+    // println!("{page_counts:#?}");
+
+    // let page_counts = HashMap::from([
+    //   ("Harry Potter and the Sorcerer's Stone".to_string(), 336),
+    //   ("The Hunger Games".to_string(), 374),
+    // ]);
   }
 }
