@@ -72,12 +72,12 @@ pub mod tools {
       );
     }
 
-    // for book in ["Pride and Prejudice", "Alice's Adventure in Wonderland"] {
-    //   match page_counts.get(book) {
-    //     Some(count) => println!("{book}: {count} pages"),
-    //     None => println!("{book} is unknown.")
-    //   }
-    // }
+    for book in ["Pride and Prejudice", "Alice's Adventure in Wonderland"] {
+      match page_counts.get(book) {
+        Some(count) => println!("{book}: {count} pages"),
+        None => println!("{book} is unknown."),
+      }
+    }
 
     // // Use the .entry() method to insert a value if nothing is found.
     // for book in ["Pride and Prejudice", "Alice's Adventure in Wonderland"] {
