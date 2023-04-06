@@ -79,11 +79,11 @@ pub mod tools {
       }
     }
 
-    // // Use the .entry() method to insert a value if nothing is found.
-    // for book in ["Pride and Prejudice", "Alice's Adventure in Wonderland"] {
-    //     let page_count: &mut i32 = page_counts.entry(book.to_string()).or_insert(0);
-    //     *page_count += 1;
-    // }
+    // Use the .entry() method to insert a value if nothing is found.
+    for book in ["Pride and Prejudice", "Alice's Adventure in Wonderland"] {
+        let page_count: &mut i32 = page_counts.entry(book.to_string()).or_insert(0);
+        *page_count += 1;
+    }
 
     // println!("{page_counts:#?}");
 
