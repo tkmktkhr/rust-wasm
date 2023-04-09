@@ -93,4 +93,9 @@ pub mod tools {
     ]);
     println!("{page_counts:#?}");
   }
+
+  pub fn box_sample() {
+    let five = Box::new(5);
+    println!("five: {}", *five);
+  }
 }
