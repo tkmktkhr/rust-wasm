@@ -55,6 +55,7 @@ fn main() {
   utils::tools::string_sample();
   utils::tools::vec_sample();
   utils::tools::hash_map();
+  utils::tools::box_sample();
 }
 
 // Array, Vec, Slice
