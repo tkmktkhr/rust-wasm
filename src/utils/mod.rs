@@ -95,20 +95,20 @@ pub mod tools {
   }
 
   // Box is an owned pointer to data on the heap. All values in Rust are stack allocated by default. 
-  // #[derive(Debug)]
-  // enum List<T> {
-  //     Cons(T, Box<List<T>>),
-  //     Nil,
-  // }
+  #[derive(Debug)]
+  enum List<T> {
+      Cons(T, Box<List<T>>),
+      Nil,
+  }
 
   pub fn box_sample() {
     let five = Box::new(5);
     println!("five: {}", *five);
 
-    // let child1_list = Box::new(List::Nil);
-    // let child2_list = List::Cons(2, child1_list);
-    // let list:List<i32> = List::Cons(1, Box::new(child2_list));
-    // println!("{list:?}");
+    let child1_list = Box::new(List::Nil);
+    let child2_list = List::Cons(2, child1_list);
+    let list:List<i32> = List::Cons(1, Box::new(child2_list));
+    println!("{list:?}");
     
   }
 }
