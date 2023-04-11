@@ -50,7 +50,6 @@ fn main() {
   endless_loop();
   break_continue();
 
-  utils::tools::tool();
   utils::tools::option_result();
   utils::tools::string_sample();
   utils::tools::vec_sample();
