@@ -1,4 +1,6 @@
 pub mod tools {
+  use std::rc::Rc;
+
   pub fn option_result() {
     let nubmers = vec![10, 20, 30];
     let first: Option<&i8> = nubmers.first();
@@ -90,11 +92,11 @@ pub mod tools {
     println!("{page_counts:#?}");
   }
 
-  // Box is an owned pointer to data on the heap. All values in Rust are stack allocated by default. 
+  // Box is an owned pointer to data on the heap. All values in Rust are stack allocated by default.
   #[derive(Debug)]
   enum List<T> {
-      Cons(T, Box<List<T>>),
-      Nil,
+    Cons(T, Box<List<T>>),
+    Nil,
   }
 
   pub fn box_sample() {
@@ -103,12 +105,14 @@ pub mod tools {
 
     let child1_list = Box::new(List::Nil);
     let child2_list = List::Cons(2, child1_list);
-    let list:List<i32> = List::Cons(1, Box::new(child2_list));
+    let list: List<i32> = List::Cons(1, Box::new(child2_list));
     println!("{list:?}");
-    
   }
 
-  // pub fn rc() {
-
-  // }
+  pub fn rc() {
+    let s: Rc<String> = Rc::new("Live".to_string());
+    let t = s.clone();
+    let u = s.clone();
+    println!("{:p}, {:p}, {:p}", s, t, u) // same pointer
+  }
 }
