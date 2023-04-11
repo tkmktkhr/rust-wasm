@@ -109,6 +109,8 @@ pub mod tools {
     println!("{list:?}");
   }
 
+  // Box enables (im)mutable borrows that are enforced at compile time.
+  // RefCell enables (im)mutable borrows that are enforced at run time and will panic if it fails at runtime.
   pub fn rc() {
     let s: Rc<String> = Rc::new("Live".to_string());
     let t = s.clone();
