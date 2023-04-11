@@ -113,6 +113,7 @@ pub mod tools {
     let s: Rc<String> = Rc::new("Live".to_string());
     let t = s.clone();
     let u = s.clone();
-    println!("{:p}, {:p}, {:p}", s, t, u) // same pointer
+    println!("{:p}, {:p}, {:p}", s, t, u); // same pointer
+    println!("{:?}", Rc::strong_count(&s));
   }
 }
