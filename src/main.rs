@@ -1,11 +1,10 @@
+use race::fn_race;
 use std::convert::AsRef;
 use std::fmt::Debug;
 
 mod library;
 mod race;
 mod utils;
-
-use race::fn_race;
 
 fn main() {
   // dereference
