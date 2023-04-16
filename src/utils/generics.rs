@@ -15,3 +15,26 @@ pub fn generics_sample() {
   println!("{x:?}");
   println!("{integer:?} and {float:?} and {test:?}");
 }
+
+// Methods
+#[derive(Debug)]
+struct PointA<T>(T, T);
+
+impl<T> PointA<T> {
+  fn x(&self) -> &T {
+    &self.0
+  }
+
+  fn y(&self) -> &T {
+    &self.1
+  }
+
+  // fn set_x(&mut self, x: T) {
+  //   self.0 += x
+  // }
+}
+
+pub fn generic_method() {
+  let p = PointA(5, 10);
+  println!("p.x = {}, p.y = {}", p.x(), p.y())
+}

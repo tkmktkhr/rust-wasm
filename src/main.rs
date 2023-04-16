@@ -55,6 +55,9 @@ fn main() {
   utils::tools::hash_map();
   utils::tools::box_sample();
   utils::tools::rc();
+
+  utils::generics::generics_sample();
+  utils::generics::generic_method();
 }
 
 // Array, Vec, Slice
