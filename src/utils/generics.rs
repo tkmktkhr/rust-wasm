@@ -29,12 +29,14 @@ impl<T> PointA<T> {
     &self.1
   }
 
-  // fn set_x(&mut self, x: T) {
-  //   self.0 += x
-  // }
+  fn set_x(&mut self, x: T) {
+    self.0 = x
+  }
 }
 
 pub fn generic_method() {
-  let p = PointA(5, 10);
+  let mut p = PointA(5, 10);
+  println!("p.x = {}, p.y = {}", p.x(), p.y());
+  p.set_x(8);
   println!("p.x = {}, p.y = {}", p.x(), p.y())
 }
