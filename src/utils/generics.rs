@@ -38,5 +38,14 @@ pub fn generic_method() {
   let mut p = PointA(5, 10);
   println!("p.x = {}, p.y = {}", p.x(), p.y());
   p.set_x(8);
-  println!("p.x = {}, p.y = {}", p.x(), p.y())
+  println!("p.x = {}, p.y = {}", p.x(), p.y());
+
+  // Monomorphization
+  // let float = Some(5.0);
+  // // means, as if you wrote
+  // enum Option_f64 {
+  //   Some(f64),
+  //   None,
+  // }
+  // let float = Option_f64::Some(5.0);
 }
