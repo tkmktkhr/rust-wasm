@@ -50,22 +50,20 @@ pub fn generic_method() {
   // let float = Option_f64::Some(5.0);
 }
 
+// Trait
 // Rust lets you abstract over types with traits. They’re similar to interfaces:
 
+trait Pet {
+  fn name(&self) -> String;
+}
+
+struct Dog {
+  name: String,
+}
+
+struct Cat;
 
 // pub fn trait() {
-
-// }
-
-// trait Pet {
-//   fn name(&self) -> String;
-// }
-
-// struct Dog {
-//   name: String,
-// }
-
-// struct Cat;
 
 // impl Pet for Dog {
 //   fn name(&self) -> String {
