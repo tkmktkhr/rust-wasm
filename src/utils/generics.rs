@@ -65,11 +65,11 @@ struct Cat;
 
 // pub fn trait() {
 
-// impl Pet for Dog {
-//   fn name(&self) -> String {
-//       self.name.clone()
-//   }
-// }
+impl Pet for Dog {
+  fn name(&self) -> String {
+      self.name.clone()
+  }
+}
 
 // impl Pet for Cat {
 //   fn name(&self) -> String {
