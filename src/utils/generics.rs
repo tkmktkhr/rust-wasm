@@ -81,10 +81,12 @@ fn greet<P: Pet>(pet: &P) {
   println!("Who's a cutie? {} is!", pet.name());
 }
 
-// fn main() {
-//   let fido = Dog { name: "Fido".into() };
-//   greet(&fido);
+pub fn trait_sample() {
+  let fido = Dog {
+    name: "Fido".into(),
+  };
+  greet(&fido);
 
-//   let captain_floof = Cat;
-//   greet(&captain_floof);
-// }
+  let captain_floof = Cat;
+  greet(&captain_floof);
+}
