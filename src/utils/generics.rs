@@ -67,19 +67,19 @@ struct Cat;
 
 impl Pet for Dog {
   fn name(&self) -> String {
-      self.name.clone()
+    self.name.clone()
   }
 }
 
-// impl Pet for Cat {
-//   fn name(&self) -> String {
-//       String::from("The cat") // No name, cats won't respond to it anyway.
-//   }
-// }
+impl Pet for Cat {
+  fn name(&self) -> String {
+    String::from("The cat") // No name, cats won't respond to it anyway.
+  }
+}
 
-// fn greet<P: Pet>(pet: &P) {
-//   println!("Who's a cutie? {} is!", pet.name());
-// }
+fn greet<P: Pet>(pet: &P) {
+  println!("Who's a cutie? {} is!", pet.name());
+}
 
 // fn main() {
 //   let fido = Dog { name: "Fido".into() };
