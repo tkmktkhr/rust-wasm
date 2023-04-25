@@ -89,4 +89,14 @@ pub fn trait_sample() {
 
   let captain_floof = Cat;
   greet(&captain_floof);
+
+  let pets: Vec<Box<dyn Pet>> = vec![
+    Box::new(Dog {
+      name: String::from("Fido"),
+    }),
+    Box::new(Cat),
+  ];
+  for pet in pets {
+    println!("Hello {}!", pet.name());
+  }
 }
