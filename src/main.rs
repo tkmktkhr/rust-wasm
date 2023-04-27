@@ -59,6 +59,7 @@ fn main() {
   utils::generics::generics_sample();
   utils::generics::generic_method();
   utils::traits::trait_sample();
+  utils::traits::trait_derive();
 }
 
 // Array, Vec, Slice

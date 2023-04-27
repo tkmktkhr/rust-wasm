@@ -100,8 +100,16 @@ pub fn trait_sample() {
     println!("Hello {}!", pet.name());
   }
 
-  println!("{} {}", std::mem::size_of::<Dog>(), std::mem::size_of::<Cat>());
-  println!("{} {}", std::mem::size_of::<&Dog>(), std::mem::size_of::<&Cat>());
+  println!(
+    "{} {}",
+    std::mem::size_of::<Dog>(),
+    std::mem::size_of::<Cat>()
+  );
+  println!(
+    "{} {}",
+    std::mem::size_of::<&Dog>(),
+    std::mem::size_of::<&Cat>()
+  );
   println!("{}", std::mem::size_of::<&dyn Pet>());
   println!("{}", std::mem::size_of::<Box<dyn Pet>>());
 }
