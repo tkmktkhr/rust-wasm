@@ -83,3 +83,31 @@ pub fn trait_derive() {
   );
   println!("pointer1: {:p}, pointer2: {:p}", &p1, &p2)
 }
+
+// Default Methods
+trait Equals {
+  fn equal(&self, other: &Self) -> bool;
+  fn not_equal(&self, other: &Self) -> bool {
+    !self.equal(other)
+  }
+}
+
+#[derive(Debug)]
+struct Centimeter(i16);
+
+impl Equals for Centimeter {
+  fn equal(&self, other: &Self) -> bool {
+    self.0 == other.0
+  }
+  // can be overwrite.
+  // fn not_equal(&self, other: &Self) -> bool {
+  //     !!self.equal(other)
+  // }
+}
+
+pub fn trait_default_method() {
+  let a = Centimeter(10);
+  let b = Centimeter(20);
+  println!("{a:?} equals {b:?}: {}", a.equal(&b));
+  println!("{a:?} not_equals {b:?}: {}", a.not_equal(&b));
+}
