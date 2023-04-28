@@ -81,4 +81,5 @@ pub fn trait_derive() {
     &p2,
     if p1 == p2 { "yes" } else { "no" }
   );
+  println!("pointer1: {:p}, pointer2: {:p}", &p1, &p2)
 }
