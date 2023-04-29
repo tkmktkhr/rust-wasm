@@ -118,8 +118,23 @@ fn duplicate<T: Clone>(a: T) -> (T, T) {
   (a.clone(), a.clone())
 }
 
+// Syntactic sugar for:
+//   fn add_42_millions<T: Into<i32>>(x: T) -> i32 {
+//   fn add_42_millions(x: impl Into<i32>) -> i32 {
+fn add_42_millions<T>(x: T) -> i32
+where
+  T: Into<i32>,
+{
+  x.into() + 42_000_000
+}
+
 pub fn trait_bounds() {
   let foo = String::from("foo");
   let pair = duplicate(foo); // String contains a Clone data type so foo can be arg.
   println!("{pair:?}");
+
+  let many = add_42_millions(42_i8);
+  println!("{many:?}");
+  let many_more = add_42_millions(10_000_000);
+  println!("{many_more:?}");
 }
