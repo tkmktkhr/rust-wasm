@@ -111,3 +111,6 @@ pub fn trait_default_method() {
   println!("{a:?} equals {b:?}: {}", a.equal(&b));
   println!("{a:?} not_equals {b:?}: {}", a.not_equal(&b));
 }
+
+// trait bounds
+// When working with generics, you often want to require the types to implement some trait, so that you can call this trait’s methods.
