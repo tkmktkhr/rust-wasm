@@ -96,7 +96,7 @@ fn transpose(matrix: &[[i32; 3]; 3]) -> [[i32; 3]; 3] {
 }
 
 fn pretty_print<T, Line, Matrix>(matrix: Matrix)
-where
+where // easier to read Generics.
   T: Debug,
   // A line references a slice of items
   Line: AsRef<[T]>,
