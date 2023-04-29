@@ -58,9 +58,11 @@ fn main() {
 
   utils::generics::generics_sample();
   utils::generics::generic_method();
+
   utils::traits::trait_sample();
   utils::traits::trait_derive();
   utils::traits::trait_default_method();
+  utils::traits::trait_bounds();
 }
 
 // Array, Vec, Slice
@@ -96,7 +98,8 @@ fn transpose(matrix: &[[i32; 3]; 3]) -> [[i32; 3]; 3] {
 }
 
 fn pretty_print<T, Line, Matrix>(matrix: Matrix)
-where // easier to read Generics.
+where
+  // easier to read Generics.
   T: Debug,
   // A line references a slice of items
   Line: AsRef<[T]>,

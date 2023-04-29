@@ -114,3 +114,12 @@ pub fn trait_default_method() {
 
 // trait bounds
 // When working with generics, you often want to require the types to implement some trait, so that you can call this trait’s methods.
+fn duplicate<T: Clone>(a: T) -> (T, T) {
+  (a.clone(), a.clone())
+}
+
+pub fn trait_bounds() {
+  let foo = String::from("foo");
+  let pair = duplicate(foo); // String contains a Clone data type so foo can be arg.
+  println!("{pair:?}");
+}
