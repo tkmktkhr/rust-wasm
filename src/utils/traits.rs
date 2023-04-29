@@ -138,3 +138,23 @@ pub fn trait_bounds() {
   let many_more = add_42_millions(10_000_000);
   println!("{many_more:?}");
 }
+
+// impl trait
+use std::fmt::Display;
+
+fn get_x(name: impl Display) -> impl Display {
+  // For a return type, it means that the return type is some concrete type that implements the trait, without naming the type. This can be useful when you don’t want to expose the concrete type in a public API.
+  format!("HEllo {name}")
+}
+
+pub fn trait_impl() {
+  let x = get_x(1);
+  println!("{x}");
+
+  // NG: `traits::Dog` doesn't implement `std::fmt::Display`
+  // let fido = Dog {
+  //   name: "Fido".into(),
+  // };
+  // let dog = get_x(fido);
+  // println!("{dog}");
+}
