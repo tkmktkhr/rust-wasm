@@ -182,6 +182,17 @@ impl Iterator for Fibonacci {
 pub fn iterators() {
   let fib = Fibonacci { curr: 0, next: 1 };
   for (i, n) in fib.enumerate().take(6) {
+    // enumerate returns tuple.
     println!("fib({i}): {n}");
   }
+}
+
+// FromIterator
+pub fn from_iterator() {
+  let primes = vec![2, 3, 5, 7];
+  let prime_squares = primes
+    .into_iter()
+    .map(|prime| prime * prime)
+    .collect::<Vec<_>>();
+  println!("{prime_squares:?}");
 }
