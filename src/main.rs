@@ -67,6 +67,7 @@ fn main() {
   utils::traits::iterators();
   utils::traits::from_iterator();
   utils::traits::from_sample();
+  utils::traits::into_sample();
 }
 
 // Array, Vec, Slice

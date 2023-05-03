@@ -203,5 +203,14 @@ pub fn from_sample() {
   let addr = std::net::Ipv4Addr::from([127, 0, 0, 1]);
   let one = i16::from(true);
   let bigger = i32::from(123i16);
-  println!("{s}, {addr}, {one}, {bigger}");
+  println!("from: {s}, {addr}, {one}, {bigger}");
+}
+
+// Into
+pub fn into_sample() {
+  let s: String = "hello".into();
+  let addr: std::net::Ipv4Addr = [127, 0, 0, 1].into();
+  let one: i16 = true.into();
+  let bigger: i32 = 123i16.into();
+  println!("into: {s}, {addr}, {one}, {bigger}");
 }
