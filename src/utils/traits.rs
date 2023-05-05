@@ -223,7 +223,7 @@ fn count_lines<R: Read>(reader: R) -> usize {
   buf_reader.lines().count()
 }
 
-pub fn read_write() -> Result<()> {
+pub fn read_sample() -> Result<()> {
   let slice: &[u8] = b"foo\nbar\nbaz\n";
   println!("lines in slice: {}", count_lines(slice));
 
@@ -231,4 +231,3 @@ pub fn read_write() -> Result<()> {
   println!("lines in file: {}", count_lines(file));
   Ok(())
 }
-
