@@ -216,7 +216,7 @@ pub fn into_sample() {
 }
 
 // Read and Write
-use std::io::{BufRead, BufReader, Read, Result};
+use std::io::{BufRead, BufReader, Read, Result, Write};
 
 fn count_lines<R: Read>(reader: R) -> usize {
   let buf_reader = BufReader::new(reader);
@@ -229,5 +229,23 @@ pub fn read_sample() -> Result<()> {
 
   let file = std::fs::File::open(std::env::current_exe()?)?;
   println!("lines in file: {}", count_lines(file));
+  Ok(())
+}
+
+// write
+// use std::io::{Result, Write};
+
+fn log<W: Write>(writer: &mut W, msg: &str) -> Result<()> {
+  println!("as bytes: {:?}", msg.as_bytes());
+  println!("as bytes pointer: {:p}", msg.as_bytes());
+  writer.write_all(msg.as_bytes())?;
+  writer.write_all("\n".as_bytes())
+}
+
+pub fn write_sample() -> Result<()> {
+  let mut buffer = Vec::new();
+  log(&mut buffer, "Hello")?;
+  log(&mut buffer, "Worldあ")?;
+  println!("Logged: {:?}", buffer);
   Ok(())
 }
