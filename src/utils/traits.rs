@@ -249,3 +249,5 @@ pub fn write_sample() -> Result<()> {
   println!("Logged: {:?}", buffer);
   Ok(())
 }
+
+// drop trait
