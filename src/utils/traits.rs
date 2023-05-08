@@ -251,3 +251,6 @@ pub fn write_sample() -> Result<()> {
 }
 
 // drop trait
+struct Droppable {
+  name: &'static str,
+}
