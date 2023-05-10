@@ -260,3 +260,18 @@ impl Drop for Droppable {
     println!("Dropping {}", self.name)
   }
 }
+
+pub fn drop_sample() {
+  let a = Droppable { name: "a" };
+  {
+    let _b = Droppable { name: "b" };
+    {
+      let _c = Droppable { name: "c" };
+      let _d = Droppable { name: "d" };
+      println!("Exiting block B");
+    }
+    println!("Exiting block A");
+  }
+  drop(a);
+  println!("Exiting main");
+}
