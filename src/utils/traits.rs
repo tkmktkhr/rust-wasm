@@ -254,3 +254,9 @@ pub fn write_sample() -> Result<()> {
 struct Droppable {
   name: &'static str,
 }
+
+impl Drop for Droppable {
+  fn drop(&mut self) {
+    println!("Dropping {}", self.name)
+  }
+}
