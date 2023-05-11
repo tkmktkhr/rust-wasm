@@ -273,5 +273,6 @@ pub fn drop_sample() {
     println!("Exiting block A");
   }
   drop(a);
+  // a.drop(); // This method is called implicitly when the value goes out of scope, and cannot be called explicitly (this is compiler error E0040). 
   println!("Exiting main");
 }
