@@ -273,11 +273,11 @@ pub fn drop_sample() {
     println!("Exiting block A");
   }
   drop(a);
-  // a.drop(); // This method is called implicitly when the value goes out of scope, and cannot be called explicitly (this is compiler error E0040). 
+  // a.drop(); // This method is called implicitly when the value goes out of scope, and cannot be called explicitly (this is compiler error E0040).
   println!("Exiting main");
 }
 
-// Default 
+// Default
 
 #[derive(Debug, Default)]
 struct Derived {
@@ -296,16 +296,15 @@ impl Default for Implemented {
 }
 
 pub fn default_sample() {
+  let default_struct: Derived = Default::default();
+  println!("{default_struct:#?}");
 
-    let default_struct: Derived = Default::default();
-    println!("{default_struct:#?}");
+  let almost_default_struct = Derived {
+    y: " Y is set!".into(),
+    ..Default::default()
+  };
+  println!("{almost_default_struct:#?}");
 
-    // let almost_default_struct = Derived {
-    //     y: "Y is set!".into(),
-    //     ..Default::default()
-    // };
-    // println!("{almost_default_struct:#?}");
-
-    // let nothing: Option<Derived> = None;
-    // println!("{:#?}", nothing.unwrap_or_default());
+  // let nothing: Option<Derived> = None;
+  // println!("{:#?}", nothing.unwrap_or_default());
 }
