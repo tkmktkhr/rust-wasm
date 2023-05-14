@@ -295,6 +295,7 @@ impl Default for Implemented {
   }
 }
 
+// Standard Rust types often implement Default with reasonable values (e.g. 0, "", etc).
 pub fn default_sample() {
   let default_struct: Derived = Default::default();
   println!("{default_struct:#?}");
@@ -305,6 +306,6 @@ pub fn default_sample() {
   };
   println!("{almost_default_struct:#?}");
 
-  // let nothing: Option<Derived> = None;
-  // println!("{:#?}", nothing.unwrap_or_default());
+  let nothing: Option<Derived> = None;
+  println!("{:#?}", nothing.unwrap_or_default());
 }
