@@ -309,3 +309,7 @@ pub fn default_sample() {
   let nothing: Option<Derived> = None;
   println!("{:#?}", nothing.unwrap_or_default());
 }
+
+// Add, Mul, ...
+#[derive(Debug, Copy, Clone)]
+struct Point { x: i32, y: i32 }
