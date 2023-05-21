@@ -320,8 +320,10 @@ struct Point {
 impl std::ops::Add for Point {
   type Output = Self; // alias.
 
-  fn add(self, other: Self) -> Self { // work if Self is Point
-    Self { // work if Self is Point
+  fn add(self, other: Self) -> Self {
+    // work if Self is Point
+    Self {
+      // work if Self is Point
       x: self.x + other.x,
       y: self.y + other.y,
     }
@@ -338,3 +340,16 @@ pub fn add_sample() {
   println!("pointer 1+2: {:p},{:?}", &plus_res, plus_res);
 }
 
+// Closures
+fn apply_with_log(func: impl FnOnce(i32) -> i32, input: i32) -> i32 {
+  println!("Calling function on {input}");
+  func(input)
+}
+
+pub fn closure_sample() {
+  let add_3 = |x| x + 3;
+  let mul_5 = |x| x + 5;
+
+  println!("add_3: {}", apply_with_log(add_3, 10));
+  println!("mul_5: {}", apply_with_log(mul_5, 20));
+}

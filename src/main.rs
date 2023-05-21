@@ -73,6 +73,7 @@ fn main() {
   utils::traits::drop_sample();
   utils::traits::default_sample();
   utils::traits::add_sample();
+  utils::traits::closure_sample();
 }
 
 // Array, Vec, Slice
