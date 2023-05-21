@@ -318,7 +318,7 @@ struct Point {
 }
 
 impl std::ops::Add for Point {
-  type Output = Self;
+  type Output = Self; // alias.
 
   fn add(self, other: Self) -> Self { // work if Self is Point
     Self { // work if Self is Point
