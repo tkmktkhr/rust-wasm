@@ -320,8 +320,8 @@ struct Point {
 impl std::ops::Add for Point {
   type Output = Self;
 
-  fn add(self, other: Self) -> Self {
-    Self {
+  fn add(self, other: Self) -> Self { // work if Self is Point
+    Self { // work if Self is Point
       x: self.x + other.x,
       y: self.y + other.y,
     }
@@ -331,19 +331,10 @@ impl std::ops::Add for Point {
 pub fn add_sample() {
   let p1 = Point { x: 10, y: 20 };
   let p2 = Point { x: 100, y: 200 };
+  let plus_res = p1 + p2;
   println!("{:?} + {:?} = {:?}", p1, p2, p1 + p2);
+  println!("pointer 1: {:p}", &p1);
+  println!("pointer 2: {:p}", &p2);
+  println!("pointer 1+2: {:p},{:?}", &plus_res, plus_res);
 }
 
-// impl std::ops::Add for Point {
-//   type Output = Self;
-
-//   fn add(self, other: Self) -> Self {
-//       Self {x: self.x + other.x, y: self.y + other.y}
-//   }
-// }
-
-// fn main() {
-//   let p1 = Point { x: 10, y: 20 };
-//   let p2 = Point { x: 100, y: 200 };
-//   println!("{:?} + {:?} = {:?}", p1, p2, p1 + p2);
-// }
