@@ -347,9 +347,15 @@ fn apply_with_log(func: impl FnOnce(i32) -> i32, input: i32) -> i32 {
 }
 
 pub fn closure_sample() {
+  // closure must be Fn(&self), FnMut(&mut self), FnOnce(self) instance.
+  // FnMut and FnOnce extends Fn trait.
   let add_3 = |x| x + 3; // |x| {x + 3} is also fine.
   let mul_5 = |x| x + 5;
 
   println!("add_3: {}", apply_with_log(add_3, 10));
   println!("mul_5: {}", apply_with_log(mul_5, 20));
+
+  let outer_var = 42;
+  let closure_annotated = |i: i32| -> i32 { i + outer_var };
+  println!("closure_annotated: {}", closure_annotated(1));
 }
