@@ -2,9 +2,11 @@ use race::fn_race;
 use std::convert::AsRef;
 use std::fmt::Debug;
 
-mod library;
+mod exercises;
 mod race;
 mod utils;
+
+use exercises::library;
 
 fn main() {
   // dereference
