@@ -347,7 +347,7 @@ fn apply_with_log(func: impl FnOnce(i32) -> i32, input: i32) -> i32 {
 }
 
 pub fn closure_sample() {
-  let add_3 = |x| x + 3;
+  let add_3 = |x| x + 3; // |x| {x + 3} is also fine.
   let mul_5 = |x| x + 5;
 
   println!("add_3: {}", apply_with_log(add_3, 10));
