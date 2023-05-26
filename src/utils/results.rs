@@ -1,19 +1,6 @@
-use std::fs::File;
-use std::io::Read;
+use std::fs;
+use std::io::{self, Read};
 
-pub fn file_read() {
-  let file = File::open("./src/utils/results.json"); // absolute path.
-  match file {
-    Ok(mut file) => {
-      let mut contents = String::new();
-      file.read_to_string(&mut contents);
-      println!("File: {contents}");
-    }
-    Err(err) => {
-      println!("The file could not be opened: {err}");
-    }
-  }
-}
 
 // Propagate Errors
 // The try-operator ? is used to return errors to the caller. 
@@ -23,3 +10,27 @@ pub fn file_read() {
     Err(err) => return Err(err),
   }
 */
+
+pub fn file_read() {
+    // create new file
+    // fs::write("results2.json", "alice").unwrap();
+    // let username = read_username("./results2.json"); // absolute path.
+
+    let username = read_username("./src/utils/results.json"); // absolute path.
+    println!("username or error: {username:?}");
+}
+
+fn read_username(path: &str) -> Result<String, io::Error> {
+  let username_file_result = fs::File::open(path);
+  println!("{:?}", &username_file_result);
+  let mut username_file = match username_file_result {
+    Ok(file) => file,
+    Err(err) => return Err(err),
+  };
+
+  let mut username = String::new();
+  match username_file.read_to_string(&mut username) {
+    Ok(_) =>  Ok(username),
+    Err(err) => Err(err),
+  }
+}
