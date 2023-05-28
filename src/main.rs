@@ -78,7 +78,7 @@ fn main() {
   utils::traits::closure_sample();
 
   utils::results::file_read();
-  utils::results::file_read2();
+  // utils::results::file_read2();
 }
 
 // Array, Vec, Slice
