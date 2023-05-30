@@ -44,22 +44,22 @@ enum ReadUsernameError {
   EmptyUsername(String),
 }
 
-// impl Error for ReadUsernameError {}
+impl Error for ReadUsernameError {}
 
-// impl Display for ReadUsernameError {
-//     fn fmt(&self, f: &mut Formatter) -> fmt::Result {
-//         match self {
-//             Self::IoError(e) => write!(f, "IO error: {e}"),
-//             Self::EmptyUsername(filename) => write!(f, "Found no username in {filename}"),
-//         }
-//     }
-// }
+impl Display for ReadUsernameError {
+    fn fmt(&self, f: &mut Formatter) -> fmt::Result {
+        match self {
+            Self::IoError(e) => write!(f, "IO error: {e}"),
+            Self::EmptyUsername(filename) => write!(f, "Found no username in {filename}"),
+        }
+    }
+}
 
-// impl From<io::Error> for ReadUsernameError {
-//     fn from(err: io::Error) -> ReadUsernameError {
-//         ReadUsernameError::IoError(err)
-//     }
-// }
+impl From<io::Error> for ReadUsernameError {
+    fn from(err: io::Error) -> ReadUsernameError {
+        ReadUsernameError::IoError(err)
+    }
+}
 
 // fn read_username1(path: &str) -> Result<String, ReadUsernameError> {
 //     let mut username = String::with_capacity(100);
