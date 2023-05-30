@@ -40,8 +40,8 @@ fn read_username(path: &str) -> Result<String, io::Error> {
 
 #[derive(Debug)]
 enum ReadUsernameError {
-    IoError(io::Error),
-    EmptyUsername(String),
+  IoError(io::Error),
+  EmptyUsername(String),
 }
 
 // impl Error for ReadUsernameError {}
