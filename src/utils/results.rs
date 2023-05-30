@@ -38,11 +38,11 @@ fn read_username(path: &str) -> Result<String, io::Error> {
 
 // Converting Error types
 
-// #[derive(Debug)]
-// enum ReadUsernameError {
-//     IoError(io::Error),
-//     EmptyUsername(String),
-// }
+#[derive(Debug)]
+enum ReadUsernameError {
+    IoError(io::Error),
+    EmptyUsername(String),
+}
 
 // impl Error for ReadUsernameError {}
 
