@@ -18,7 +18,7 @@ pub fn file_read() {
   // let username = read_username("./results2.json"); // absolute path.
 
   let username = read_username("./src/utils/results.json"); // absolute path.
-  println!("username or error: {username:?}");
+  println!("read1: username or error: {username:?}");
 }
 
 fn read_username(path: &str) -> Result<String, io::Error> {
@@ -61,17 +61,18 @@ impl From<io::Error> for ReadUsernameError {
     }
 }
 
-// fn read_username1(path: &str) -> Result<String, ReadUsernameError> {
-//     let mut username = String::with_capacity(100);
-//     File::open(path)?.read_to_string(&mut username)?;
-//     if username.is_empty() {
-//         return Err(ReadUsernameError::EmptyUsername(String::from(path)));
-//     }
-//     Ok(username)
-// }
+fn read_username1(path: &str) -> Result<String, ReadUsernameError> {
+    let mut username = String::with_capacity(100);
+    File::open(path)?.read_to_string(&mut username)?;
+    if username.is_empty() {
+        return Err(ReadUsernameError::EmptyUsername(String::from(path)));
+    }
+    println!("before returning results. {:?}", &username);
+    Ok(username)
+}
 
-// pub fn file_read2() {
-//     //fs::write("config.dat", "").unwrap();
-//     let username = read_username1("./src/utils/results.json");
-//     println!("username or error: {username:?}");
-// }
+pub fn file_read2() {
+    //fs::write("config.dat", "").unwrap();
+    let username = read_username1("./src/utils/results.json");
+    println!("read2: username or error: {username:?}");
+}
