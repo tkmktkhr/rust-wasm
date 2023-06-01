@@ -37,7 +37,6 @@ fn read_username(path: &str) -> Result<String, io::Error> {
 }
 
 // Converting Error types
-
 #[derive(Debug)]
 enum ReadUsernameError {
   IoError(io::Error),
@@ -76,3 +75,9 @@ pub fn file_read2() {
     let username = read_username1("./src/utils/results.json");
     println!("read2: username or error: {username:?}");
 }
+
+// `expression?` works the same as
+// match expression {
+//   Ok(value) => value,
+//   Err(err)  => return Err(From::from(err)),
+// }
