@@ -77,7 +77,7 @@ fn main() {
   utils::traits::add_sample();
   utils::traits::closure_sample();
 
-  utils::results::file_read();
+  utils::results::file_read1();
   utils::results::file_read2();
 }
 

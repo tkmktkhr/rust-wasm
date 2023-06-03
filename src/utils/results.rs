@@ -2,6 +2,7 @@ use std::error::Error;
 use std::fmt::{self, Display, Formatter};
 use std::fs::{self, File};
 use std::io::{self, Read};
+// use thiserror::Error;
 
 // Propagate Errors
 // The try-operator ? is used to return errors to the caller.
@@ -12,16 +13,16 @@ use std::io::{self, Read};
   }
 */
 
-pub fn file_read() {
+pub fn file_read1() {
   // create new file
   // fs::write("results2.json", "alice").unwrap();
   // let username = read_username("./results2.json"); // absolute path.
 
-  let username = read_username("./src/utils/results.json"); // absolute path.
+  let username = read_username1("./src/utils/results.json"); // absolute path.
   println!("read1: username or error: {username:?}");
 }
 
-fn read_username(path: &str) -> Result<String, io::Error> {
+fn read_username1(path: &str) -> Result<String, io::Error> {
   let username_file_result = fs::File::open(path);
   println!("{:?}", &username_file_result);
   let mut username_file = match username_file_result {
@@ -46,34 +47,34 @@ enum ReadUsernameError {
 impl Error for ReadUsernameError {}
 
 impl Display for ReadUsernameError {
-    fn fmt(&self, f: &mut Formatter) -> fmt::Result {
-        match self {
-            Self::IoError(e) => write!(f, "IO error: {e}"),
-            Self::EmptyUsername(filename) => write!(f, "Found no username in {filename}"),
-        }
+  fn fmt(&self, f: &mut Formatter) -> fmt::Result {
+    match self {
+      Self::IoError(e) => write!(f, "IO error: {e}"),
+      Self::EmptyUsername(filename) => write!(f, "Found no username in {filename}"),
     }
+  }
 }
 
 impl From<io::Error> for ReadUsernameError {
-    fn from(err: io::Error) -> ReadUsernameError {
-        ReadUsernameError::IoError(err)
-    }
+  fn from(err: io::Error) -> ReadUsernameError {
+    ReadUsernameError::IoError(err)
+  }
 }
 
-fn read_username1(path: &str) -> Result<String, ReadUsernameError> {
-    let mut username = String::with_capacity(100);
-    File::open(path)?.read_to_string(&mut username)?;
-    if username.is_empty() {
-        return Err(ReadUsernameError::EmptyUsername(String::from(path)));
-    }
-    println!("before returning results. {:?}", &username);
-    Ok(username)
+fn read_username2(path: &str) -> Result<String, ReadUsernameError> {
+  let mut username = String::with_capacity(100);
+  File::open(path)?.read_to_string(&mut username)?;
+  if username.is_empty() {
+    return Err(ReadUsernameError::EmptyUsername(String::from(path)));
+  }
+  println!("before returning results read_username2. {:?}", &username);
+  Ok(username)
 }
 
 pub fn file_read2() {
-    //fs::write("config.dat", "").unwrap();
-    let username = read_username1("./src/utils/results.json");
-    println!("read2: username or error: {username:?}");
+  //fs::write("config.dat", "").unwrap();
+  let username = read_username2("./src/utils/results.json");
+  println!("read2: username or error: {username:?}");
 }
 
 // `expression?` works the same as
@@ -81,3 +82,5 @@ pub fn file_read2() {
 //   Ok(value) => value,
 //   Err(err)  => return Err(From::from(err)),
 // }
+
+// Deriving Error Enums: thiserror
