@@ -38,6 +38,8 @@ fn read_username1(path: &str) -> Result<String, io::Error> {
 }
 
 // Converting Error types
+// and
+// Deriving Error Enums: thiserror
 #[derive(Debug)]
 enum ReadUsernameError {
   IoError(io::Error),
@@ -83,4 +85,4 @@ pub fn file_read2() {
 //   Err(err)  => return Err(From::from(err)),
 // }
 
-// Deriving Error Enums: thiserror
+
