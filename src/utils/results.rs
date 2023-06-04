@@ -1,7 +1,7 @@
-// use std::error::Error;
 use std::fmt::{self, Display, Formatter};
 use std::fs::{self, File};
 use std::io::{self, Read};
+// use std::error::Error;
 use thiserror::Error;
 
 // Propagate Errors
@@ -48,8 +48,10 @@ enum ReadUsernameError {
   EmptyUsername(String),
 }
 
+// thiserror’s derive macro automatically implements std::error::Error
 // impl Error for ReadUsernameError {} // this is unnecessary due to thiserror.
 
+// thiserror’s derive macro optionally Display (if the #[error(...)] attributes are provided)
 // this is unnecessary due to thiserror.
 // impl Display for ReadUsernameError {
 //   fn fmt(&self, f: &mut Formatter) -> fmt::Result {
@@ -60,6 +62,7 @@ enum ReadUsernameError {
 //   }
 // }
 
+// and From (if the #[from] attribute is added). It also works for structs.
 impl From<io::Error> for ReadUsernameError {
   fn from(err: io::Error) -> ReadUsernameError {
     ReadUsernameError::IoError(err)
