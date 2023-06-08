@@ -79,6 +79,8 @@ fn main() {
 
   utils::results::file_read1();
   utils::results::file_read2();
+
+  utils::errors::add_context_error();
 }
 
 // Array, Vec, Slice
