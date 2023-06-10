@@ -1,5 +1,4 @@
 // unit test
-
 pub fn first_word(text: &str) -> &str {
   let res = match text.find(' ') {
     Some(idx) => &text[..idx],
@@ -16,10 +15,10 @@ fn test_empty() {
 
 #[test]
 fn test_single_word() {
-  assert_eq!(first_word("hello"), "Hello");
+  assert_eq!(first_word("Hello"), "Hello");
 }
 
 #[test]
 fn test_multiple_words() {
-  assert_eq!("Hello World", "Hello");
+  assert_eq!(first_word("Hello World"), "Hello");
 }
