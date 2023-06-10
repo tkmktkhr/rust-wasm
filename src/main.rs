@@ -81,6 +81,8 @@ fn main() {
   utils::results::file_read2();
 
   utils::errors::add_context_error();
+
+  utils::tests::first_word("abc def ghi");
 }
 
 // Array, Vec, Slice
