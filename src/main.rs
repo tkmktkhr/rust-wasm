@@ -83,6 +83,8 @@ fn main() {
   utils::errors::add_context_error();
 
   utils::tests::first_word("abc def ghi");
+
+  utils::unsafes::unsafe_sample();
 }
 
 // Array, Vec, Slice
