@@ -19,3 +19,9 @@ pub fn unsafe_sample() {
 }
 
 // mutable static variables
+// safe
+static HELLO_WORLD: &str = "Hello, world!";
+
+pub fn safe_static() {
+  println!("name is: {}", HELLO_WORLD);
+}

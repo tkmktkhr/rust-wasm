@@ -85,6 +85,7 @@ fn main() {
   utils::tests::first_word("abc def ghi");
 
   utils::unsafes::unsafe_sample();
+  utils::unsafes::safe_static();
 }
 
 // Array, Vec, Slice
