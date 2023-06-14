@@ -17,3 +17,5 @@ pub fn unsafe_sample() {
     println!("r2 is: {:p}", r2);
   }
 }
+
+// mutable static variables
