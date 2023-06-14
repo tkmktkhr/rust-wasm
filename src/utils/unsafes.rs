@@ -1,3 +1,4 @@
+// dereference a raw pointer
 pub fn unsafe_sample() {
   let mut num = 5;
 
