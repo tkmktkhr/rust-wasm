@@ -1,3 +1,6 @@
+// It is good practice (and required by the Android Rust style guide) to write a comment for each unsafe block
+// explaining how the code inside it satisfies the safety requirements of the unsafe operations it is doing.
+
 // dereference a raw pointer
 pub fn unsafe_sample() {
   let mut num = 5;
