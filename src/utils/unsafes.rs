@@ -38,3 +38,17 @@ pub fn unsafe_static() {
 
     unsafe { println!("COUNTER: {COUNTER}"); }  // Potential data race!
 }
+
+// Union
+// Unions are like enums, but you need to track the active field yourself:
+#[repr(C)]
+union MyUnion {
+    i: u8,
+    b: bool,
+}
+
+pub fn unsafe_union() {
+    let u = MyUnion { i: 42 };
+    println!("int: {}", unsafe { u.i });
+    println!("bool: {}", unsafe { u.b });  // Undefined behavior!
+}

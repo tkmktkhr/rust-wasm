@@ -87,6 +87,7 @@ fn main() {
   utils::unsafes::unsafe_sample();
   utils::unsafes::safe_static();
   utils::unsafes::unsafe_static();
+  utils::unsafes::unsafe_union();
 }
 
 // Array, Vec, Slice
