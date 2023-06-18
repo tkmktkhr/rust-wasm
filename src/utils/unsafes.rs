@@ -32,6 +32,7 @@ fn add_to_counter(inc: u32) {
     unsafe { COUNTER += inc; }  // Potential data race!
 }
 
+// Using a mutable static is generally a bad idea
 pub fn unsafe_static() {
     add_to_counter(42);
 
