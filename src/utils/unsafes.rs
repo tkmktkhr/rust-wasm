@@ -78,3 +78,15 @@ pub fn unsafe_func() {
 fn count_chars(s: &str) -> usize {
   s.chars().map(|_| 1).sum()
 }
+
+// unsafe swap func
+/// Swaps the values pointed to by the given pointers.
+///
+/// # Safety
+///
+/// The pointers must be valid and properly aligned.
+unsafe fn swap(a: *mut u8, b: *mut u8) {
+  let temp = *a;
+  *a = *b;
+  *b = temp;
+}
