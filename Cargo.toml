@@ -2,7 +2,18 @@
 name = "rust-wasm"
 version = "0.1.0"
 edition = "2021"
+authors = ["Takahiro Takamuku <mukku.wordpress@gmail.com>"]
+description = "A sample project with wasm-pack"
+license = "MIT/Apache-2.0"
+repository = "https://github.com/tkmktkhr/rust-wasm"
 
 # See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
 
+[lib]
+crate-type = ["cdylib"]
+
 [dependencies]
+dotenv = "0.15.0"
+wasm-bindgen = "0.2"
+thiserror = "1.0.40"
+anyhow = "1.0.71"
