@@ -90,3 +90,12 @@ unsafe fn swap(a: *mut u8, b: *mut u8) {
   *a = *b;
   *b = temp;
 }
+
+pub fn unsafe_swap() {
+  let mut a = 42;
+  let mut b = 66;
+  unsafe {
+    swap(&mut a, &mut b);
+  }
+  println!("a: {}, b: {}", a, b);
+}
