@@ -94,6 +94,7 @@ unsafe fn swap(a: *mut u8, b: *mut u8) {
 pub fn unsafe_swap() {
   let mut a = 42;
   let mut b = 66;
+  // Safe because ...
   unsafe {
     swap(&mut a, &mut b);
   }
