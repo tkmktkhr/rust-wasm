@@ -107,3 +107,8 @@ pub fn unsafe_swap() {
   }
   println!("a: {}, b: {}", a, b);
 }
+
+// Calling External Code
+extern "C" {
+  fn abs(input: i32) -> i32;
+}
