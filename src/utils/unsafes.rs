@@ -32,28 +32,32 @@ pub fn safe_static() {
 static mut COUNTER: u32 = 0;
 
 fn add_to_counter(inc: u32) {
-    unsafe { COUNTER += inc; }  // Potential data race!
+  unsafe {
+    COUNTER += inc;
+  } // Potential data race!
 }
 
 // Using a mutable static is generally a bad idea
 pub fn unsafe_static() {
-    add_to_counter(42);
+  add_to_counter(42);
 
-    unsafe { println!("COUNTER: {COUNTER}"); }  // Potential data race!
+  unsafe {
+    println!("COUNTER: {COUNTER}");
+  } // Potential data race!
 }
 
 // Union
 // Unions are like enums, but you need to track the active field yourself:
 #[repr(C)]
 union MyUnion {
-    i: u8,
-    b: bool,
+  i: u8,
+  b: bool,
 }
 
 pub fn unsafe_union() {
-    let u = MyUnion { i: 42 };
-    println!("int: {}", unsafe { u.i });
-    println!("bool: {}", unsafe { u.b });  // Undefined behavior!
+  let u = MyUnion { i: 42 };
+  println!("int: {}", unsafe { u.i });
+  println!("bool: {}", unsafe { u.b }); // Undefined behavior!
 }
 
 // unsafe function
@@ -63,12 +67,15 @@ pub fn unsafe_func() {
   // Safe because the indices are in the correct order, within the bounds of
   // the string slice, and lie on UTF-8 sequence boundaries.
   unsafe {
-      println!("emoji: {}", emojis.get_unchecked(0..4));
-      println!("emoji: {}", emojis.get_unchecked(4..7));
-      println!("emoji: {}", emojis.get_unchecked(7..11));
+    println!("emoji: {}", emojis.get_unchecked(0..4));
+    println!("emoji: {}", emojis.get_unchecked(4..7));
+    println!("emoji: {}", emojis.get_unchecked(7..11));
   }
 
-  println!("char count: {}", count_chars(unsafe { emojis.get_unchecked(0..7) }));
+  println!(
+    "char count: {}",
+    count_chars(unsafe { emojis.get_unchecked(0..7) })
+  );
 
   // Not upholding the UTF-8 encoding requirement breaks memory safety!
   // println!("emoji: {}", unsafe { emojis.get_unchecked(0..3) });
