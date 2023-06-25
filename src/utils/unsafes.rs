@@ -119,3 +119,5 @@ pub fn unsafe_extern() {
       println!("Absolute value of -3 according to C: {}", abs(-3));
   }
 }
+
+// Unsafe trait
