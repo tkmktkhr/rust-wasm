@@ -90,6 +90,7 @@ fn main() {
   utils::unsafes::unsafe_union();
   utils::unsafes::unsafe_func();
   utils::unsafes::unsafe_swap();
+  utils::unsafes::unsafe_extern();
 }
 
 // Array, Vec, Slice
