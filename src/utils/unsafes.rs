@@ -121,3 +121,5 @@ pub fn unsafe_extern() {
 }
 
 // Unsafe trait
+use std::mem::size_of_val;
+use std::slice;
