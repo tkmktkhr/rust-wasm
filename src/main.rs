@@ -91,6 +91,8 @@ fn main() {
   utils::unsafes::unsafe_func();
   utils::unsafes::unsafe_swap();
   utils::unsafes::unsafe_extern();
+
+  utils::concurrencies::conc_thread();
 }
 
 // Array, Vec, Slice
