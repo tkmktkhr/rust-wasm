@@ -16,3 +16,5 @@ pub fn conc_thread() {
 
   handle.join().unwrap();
 }
+
+// Scoped threads
