@@ -93,6 +93,7 @@ fn main() {
   utils::unsafes::unsafe_extern();
 
   utils::concurrencies::conc_thread();
+  // utils::concurrencies::normal_scoped_thread();
 }
 
 // Array, Vec, Slice

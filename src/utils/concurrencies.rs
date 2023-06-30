@@ -18,3 +18,12 @@ pub fn conc_thread() {
 }
 
 // Scoped threads
+// NG
+// Normal threads cannot borrow from their environment:
+// pub fn normal_scoped_thread() {
+//     let s = String::from("Hello");
+
+//     thread::spawn(|| {
+//         println!("Length: {}", s.len());
+//     });
+// }
