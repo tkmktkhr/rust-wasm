@@ -27,3 +27,13 @@ pub fn conc_thread() {
 //         println!("Length: {}", s.len());
 //     });
 // }
+
+pub fn normal_scoped_thread() {
+  let s = String::from("Hello");
+
+  thread::scope(|scope| {
+      scope.spawn(|| {
+          println!("Length: {}", s.len());
+      });
+  });
+}
