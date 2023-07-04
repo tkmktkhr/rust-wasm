@@ -115,8 +115,8 @@ extern "C" {
 
 pub fn unsafe_extern() {
   unsafe {
-      // Undefined behavior if abs misbehaves.
-      println!("Absolute value of -3 according to C: {}", abs(-3));
+    // Undefined behavior if abs misbehaves.
+    println!("Absolute value of -3 according to C: {}", abs(-3));
   }
 }
 
@@ -129,9 +129,7 @@ use std::slice;
 /// The type must have a defined representation and no padding.
 pub unsafe trait AsBytes {
   fn as_bytes(&self) -> &[u8] {
-      unsafe {
-          slice::from_raw_parts(self as *const Self as *const u8, size_of_val(self))
-      }
+    unsafe { slice::from_raw_parts(self as *const Self as *const u8, size_of_val(self)) }
   }
 }
 

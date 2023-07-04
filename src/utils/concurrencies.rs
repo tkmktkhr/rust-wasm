@@ -46,8 +46,8 @@ pub fn conc_thread() {
 // }
 
 // Channels
-use std::sync::mpsc;
 // mpsc stands for Multi-Producer, Single-Consumer. Sender and SyncSender implement Clone (so you can make multiple producers) but Receiver does not.
+use std::sync::mpsc;
 pub fn channel_thread() {
   let (tx, rx) = mpsc::channel();
 
