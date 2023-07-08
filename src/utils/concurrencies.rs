@@ -55,10 +55,10 @@ pub fn channel_thread() {
   tx.send(10).unwrap();
   tx.send(20).unwrap();
 
-  println!("Received: {:?}", rx.recv());
+  println!("Received: {:?}", rx.recv()); // Consumer is single.
   println!("Received: {:?}", rx.recv());
 
-  let tx2 = tx.clone();
+  let tx2 = tx.clone(); // multiple producers.
   tx2.send(30).unwrap();
   println!("Received: {:?}", rx.recv());
 }
