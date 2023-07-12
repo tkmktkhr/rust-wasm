@@ -103,3 +103,7 @@ pub fn bounded_channel() {
     println!("Main: got {msg}");
   }
 }
+
+// Send and Sync
+// [unsafe trait] Send: a type T is Send if it is safe to move a T across a thread boundary.
+// [unsafe trait] Sync: a type T is Sync if it is safe to move a &T across a thread boundary.
