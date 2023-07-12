@@ -68,17 +68,17 @@ pub fn unbounded_channel() {
   let (tx, rx) = mpsc::channel();
 
   thread::spawn(move || {
-      let thread_id = thread::current().id();
-      for i in 1..10 {
-          tx.send(format!("Message {i}")).unwrap();
-          println!("{thread_id:?}: sent Message {i}");
-      }
-      println!("{thread_id:?}: done");
+    let thread_id = thread::current().id();
+    for i in 1..10 {
+      tx.send(format!("Message {i}")).unwrap();
+      println!("{thread_id:?}: sent Message {i}");
+    }
+    println!("{thread_id:?}: done");
   });
   thread::sleep(Duration::from_millis(100));
 
   for msg in rx.iter() {
-      println!("Main: got {msg}");
+    println!("Main: got {msg}");
   }
 }
 
