@@ -106,4 +106,8 @@ pub fn bounded_channel() {
 
 // Send and Sync
 // [unsafe trait] Send: a type T is Send if it is safe to move a T across a thread boundary.
-// [unsafe trait] Sync: a type T is Sync if it is safe to move a &T across a thread boundary.
+// [unsafe trait] Sync: a type T is Sync if it is safe to move a &T across a thread boundary. // T is Sync if and only if &T is Send
+
+// Send
+// The effect of moving ownership to another thread is that destructors will run in that thread. So the question is when you can allocate a value in one thread and deallocate it in another.
+// As an example, a connection to the SQLite library must only be accessed from a single thread.
