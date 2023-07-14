@@ -111,3 +111,8 @@ pub fn bounded_channel() {
 // Send
 // The effect of moving ownership to another thread is that destructors will run in that thread. So the question is when you can allocate a value in one thread and deallocate it in another.
 // As an example, a connection to the SQLite library must only be accessed from a single thread.
+
+// Shared State
+// Rust uses the type system to enforce synchronization of shared data. This is primarily done via two types:
+// Arc<T>, atomic reference counted T: handles sharing between threads and takes care to deallocate T when the last reference is dropped,
+// Mutex<T>: ensures mutually exclusive access to the T value.
