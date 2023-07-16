@@ -114,5 +114,26 @@ pub fn bounded_channel() {
 
 // Shared State
 // Rust uses the type system to enforce synchronization of shared data. This is primarily done via two types:
-// Arc<T>, atomic reference counted T: handles sharing between threads and takes care to deallocate T when the last reference is dropped,
+// Arc<T>, atomic reference counted T: handles sharing between threads and takes care to deallocate T when the last reference is dropped, a thread safe version of Rc that uses atomic operations.
 // Mutex<T>: ensures mutually exclusive access to the T value.
+
+pub mod shared_state {
+  use std::sync::Arc;
+  use std::thread;
+
+  pub fn arc() {
+    let v = Arc::new(vec![10, 20, 30]);
+    let mut handles = Vec::new();
+
+    for _ in 1..5 {
+      let v = Arc::clone(&v);
+      handles.push(thread::spawn(move || {
+        let thread_id = thread::current().id();
+        println!("{thread_id:?}, {v:?}");
+      }));
+    }
+
+    handles.into_iter().for_each(|h| h.join().unwrap());
+    println!("v: {v:?}");
+  }
+}

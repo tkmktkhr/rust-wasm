@@ -97,6 +97,7 @@ fn main() {
   utils::concurrencies::channel_thread();
   utils::concurrencies::unbounded_channel();
   utils::concurrencies::bounded_channel();
+  utils::concurrencies::shared_state::arc();
 }
 
 // Array, Vec, Slice
