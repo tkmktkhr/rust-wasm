@@ -133,6 +133,7 @@ pub mod shared_state {
       }));
     }
 
+    println!("v: {handles:?}");
     handles.into_iter().for_each(|h| h.join().unwrap());
     println!("v: {v:?}");
   }
