@@ -99,6 +99,7 @@ fn main() {
   utils::concurrencies::bounded_channel();
   utils::concurrencies::shared_state::arc();
   utils::concurrencies::shared_state::mutex();
+  utils::concurrencies::shared_state::arc_mutex();
 }
 
 // Array, Vec, Slice
