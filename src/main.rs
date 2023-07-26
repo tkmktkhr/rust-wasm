@@ -100,6 +100,7 @@ fn main() {
   utils::concurrencies::shared_state::arc();
   utils::concurrencies::shared_state::mutex();
   utils::concurrencies::shared_state::arc_mutex();
+  utils::concurrencies::async_sample();
 }
 
 // Array, Vec, Slice

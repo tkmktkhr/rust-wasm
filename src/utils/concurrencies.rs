@@ -172,3 +172,23 @@ pub mod shared_state {
     println!("v: {v:?}");
   }
 }
+
+// Async
+// Rust’s asynchronous operation is based on “futures”, which represent work that may be completed in the future. Futures are “polled” until they signal that they are complete.
+// Futures are polled by an async runtime, and several different runtimes are available.
+// JavaScript’s Promise is similar, but again callback-based. The language runtime implements the event loop, so many of the details of Promise resolution are hidden.
+use futures::executor::block_on;
+
+async fn count_to(count: i32) {
+    for i in 1..=count {
+        println!("Count is: {i}!");
+    }
+}
+
+async fn async_main(count: i32) {
+    count_to(count).await;
+}
+
+pub fn async_sample() {
+    block_on(async_main(10));
+}
