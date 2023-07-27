@@ -179,16 +179,21 @@ pub mod shared_state {
 // JavaScript’s Promise is similar, but again callback-based. The language runtime implements the event loop, so many of the details of Promise resolution are hidden.
 use futures::executor::block_on;
 
-async fn count_to(count: i32) {
+// The “async” keyword is syntactic sugar. The compiler replaces the return type with a future.
+async fn count_to(count: i32) -> i32 {
     for i in 1..=count {
         println!("Count is: {i}!");
-    }
+      }
+    count
 }
 
-async fn async_main(count: i32) {
-    count_to(count).await;
+// async fn async_main(count: i32) {
+  async fn async_main(count: i32) -> i32 {
+    count_to(count).await
 }
 
 pub fn async_sample() {
-    block_on(async_main(10));
+    let future = block_on(async_main(3));
+    println!("{:?}", future);
+    block_on(async_main(5));
 }
