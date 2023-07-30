@@ -206,3 +206,24 @@ pub fn async_sample() {
 // The .await keyword, applied to a Future, causes the current async function to pause until that Future is ready, and then evaluates to its output.
 // Context allows a Future to schedule itself to be polled again when an event occurs.
 // Pin ensures that the Future isn’t moved in memory, so that pointers into that future remain valid. This is required to allow references to remain valid after an .await.
+
+// Tokio
+use tokio::time;
+
+async fn tokio_count_to(count: i32) {
+  for i in 1..=count {
+    println!("Count in task: {i}!");
+    time::sleep(time::Duration::from_millis(5)).await;
+  }
+}
+
+#[tokio::main]
+pub async fn tokio_sample() {
+  println!("tokio sample!");
+  tokio::spawn(tokio_count_to(10)); // Why does count_to not (usually) get to 10? This is an example of async cancellation. tokio::spawn returns a handle which can be awaited to wait until it finishes.
+
+  for i in 1..5 {
+    println!("Main task: {i}");
+    time::sleep(time::Duration::from_millis(5)).await;
+  }
+}
