@@ -231,3 +231,8 @@ pub async fn tokio_sample() {
   }
   handle.await; // this awaits the spawn thread all(count) processes. Main and Sub tasks are executed at the same time.
 }
+
+// Tasks
+// Rust has a task system, which is a form of lightweight threading.
+// A task has a single top-level future which the executor polls to make progress.
+// That future may have one or more nested futures that its poll method polls, corresponding loosely to a call stack. Concurrency within a task is possible by polling multiple child futures, such as racing a timer and an I/O operation.
