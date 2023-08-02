@@ -236,3 +236,35 @@ pub async fn tokio_sample() {
 // Rust has a task system, which is a form of lightweight threading.
 // A task has a single top-level future which the executor polls to make progress.
 // That future may have one or more nested futures that its poll method polls, corresponding loosely to a call stack. Concurrency within a task is possible by polling multiple child futures, such as racing a timer and an I/O operation.
+
+// Async Channels
+pub mod sample_async_channels {
+
+  use tokio::sync::mpsc::{self, Receiver};
+
+  async fn ping_handler(mut input: Receiver<()>) {
+    let mut count: usize = 0;
+
+    while let Some(_) = input.recv().await {
+      count += 1;
+      println!("Received {count} pings so far.");
+    }
+
+    println!("ping_handler complete");
+  }
+
+  #[tokio::main]
+  pub async fn async_channels() {
+    let (sender, receiver) = mpsc::channel(32);
+    let ping_handler_task = tokio::spawn(ping_handler(receiver));
+    for i in 0..10 {
+      sender.send(()).await.expect("Failed to send ping.");
+      println!("Sent {} pings so far.", i + 1);
+    }
+
+    drop(sender);
+    ping_handler_task
+      .await
+      .expect("Something went wrong in ping handler task.");
+  }
+}

@@ -102,6 +102,7 @@ fn main() {
   utils::concurrencies::shared_state::arc_mutex();
   utils::concurrencies::async_sample();
   utils::concurrencies::tokio_sample();
+  utils::concurrencies::sample_async_channels::async_channels();
 }
 
 // Array, Vec, Slice
