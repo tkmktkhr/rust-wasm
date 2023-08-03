@@ -103,6 +103,7 @@ fn main() {
   utils::concurrencies::async_sample();
   utils::concurrencies::tokio_sample();
   utils::concurrencies::sample_async_channels::async_channels();
+  utils::concurrencies::sample_join::join();
 }
 
 // Array, Vec, Slice
