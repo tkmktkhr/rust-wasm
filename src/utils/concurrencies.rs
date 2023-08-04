@@ -298,3 +298,9 @@ pub mod sample_join {
     println!("{:?}", page_sizes_dict);
   }
 }
+
+// A select operation waits until any of a set of futures is ready, and responds to that future’s result.
+// In JavaScript, this is similar to Promise.race.
+pub mod sample_select {
+
+}
