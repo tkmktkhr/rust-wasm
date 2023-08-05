@@ -104,6 +104,7 @@ fn main() {
   utils::concurrencies::tokio_sample();
   utils::concurrencies::sample_async_channels::async_channels();
   utils::concurrencies::sample_join::join();
+  utils::concurrencies::sample_select::select();
 }
 
 // Array, Vec, Slice
