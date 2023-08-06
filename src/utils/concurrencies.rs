@@ -285,7 +285,8 @@ pub mod sample_join {
   #[tokio::main]
   pub async fn join() {
     println!("start join sample.");
-    let urls: [&str; 3] = [ // change to 4 in order to occur an error.
+    let urls: [&str; 3] = [
+      // change to 4 in order to occur an error.
       "https://google.com",
       "https://httpbin.org/ip",
       "https://play.rust-lang.org/",
@@ -304,46 +305,67 @@ pub mod sample_join {
 pub mod sample_select {
   use tokio::sync::mpsc::{self, Receiver};
   use tokio::time::{sleep, Duration};
-  
+
   #[derive(Debug, PartialEq)]
   enum Animal {
-      Cat { name: String },
-      Dog { name: String },
+    Cat { name: String },
+    Dog { name: String },
   }
-  
+
   async fn first_animal_to_finish_race(
-      mut cat_rcv: Receiver<String>,
-      mut dog_rcv: Receiver<String>,
+    mut cat_rcv: Receiver<String>,
+    mut dog_rcv: Receiver<String>,
   ) -> Option<Animal> {
-      tokio::select! {
-          cat_name = cat_rcv.recv() => Some(Animal::Cat { name: cat_name? }),
-          dog_name = dog_rcv.recv() => Some(Animal::Dog { name: dog_name? })
-      }
+    tokio::select! {
+        cat_name = cat_rcv.recv() => Some(Animal::Cat { name: cat_name? }),
+        dog_name = dog_rcv.recv() => Some(Animal::Dog { name: dog_name? })
+    }
   }
-  
+
   #[tokio::main]
   pub async fn select() {
-      let (cat_sender, cat_receiver) = mpsc::channel(32);
-      let (dog_sender, dog_receiver) = mpsc::channel(32);
-      tokio::spawn(async move {
-          sleep(Duration::from_millis(500)).await; // changeable
-          cat_sender
-              .send(String::from("Felix"))
-              .await
-              .expect("Failed to send cat.");
-      });
-      tokio::spawn(async move {
-          sleep(Duration::from_millis(50)).await; // changeable
-          dog_sender
-              .send(String::from("Rex"))
-              .await
-              .expect("Failed to send dog.");
-      });
-  
-      let winner = first_animal_to_finish_race(cat_receiver, dog_receiver)
-          .await
-          .expect("Failed to receive winner");
-  
-      println!("Winner is {winner:?}");
+    let (cat_sender, cat_receiver) = mpsc::channel(32);
+    let (dog_sender, dog_receiver) = mpsc::channel(32);
+    tokio::spawn(async move {
+      sleep(Duration::from_millis(500)).await; // changeable
+      cat_sender
+        .send(String::from("Felix"))
+        .await
+        .expect("Failed to send cat.");
+    });
+    tokio::spawn(async move {
+      sleep(Duration::from_millis(50)).await; // changeable
+      dog_sender
+        .send(String::from("Rex"))
+        .await
+        .expect("Failed to send dog.");
+    });
+
+    let winner = first_animal_to_finish_race(cat_receiver, dog_receiver)
+      .await
+      .expect("Failed to receive winner");
+
+    println!("Winner is {winner:?}");
+  }
+}
+
+pub mod sample_block_executor {
+  use futures::future::join_all;
+  use std::time::Instant;
+
+  async fn sleep_ms(start: &Instant, id: u64, duration_ms: u64) {
+    std::thread::sleep(std::time::Duration::from_millis(duration_ms));
+    println!(
+      "future {id} slept for {duration_ms}ms, finished after {}ms",
+      start.elapsed().as_millis()
+    );
+  }
+
+  #[tokio::main(flavor = "current_thread")]
+  pub async fn blocking_executor() {
+    println!("start blocking executor sample.");
+    let start = Instant::now();
+    let sleep_futures = (1..=10).map(|t| sleep_ms(&start, t, t * 10));
+    join_all(sleep_futures).await;
   }
 }
