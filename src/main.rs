@@ -106,6 +106,7 @@ fn main() {
   utils::concurrencies::sample_join::join();
   utils::concurrencies::sample_select::select();
   utils::concurrencies::sample_block_executor::blocking_executor();
+  utils::concurrencies::sample_pin::pin();
 }
 
 // Array, Vec, Slice
