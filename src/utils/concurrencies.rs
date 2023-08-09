@@ -425,3 +425,48 @@ pub mod sample_pin {
     }
   }
 }
+
+// Async Traits -> compile error due to the issue (https://github.com/rust-lang/rust/issues/91611)
+// pub mod async_traits {
+//   use async_trait::async_trait;
+//   use std::time::Instant;
+//   use tokio::time::{sleep, Duration};
+
+//   #[async_trait]
+//   trait Sleeper {
+//     async fn sleep(&self);
+//   }
+
+//   struct FixedSleeper {
+//     sleep_ms: u64,
+//   }
+
+//   impl Sleeper for FixedSleeper {
+//     // ERROR functions in traits cannot be declared `async`
+//     // `async` trait functions are not currently supported
+//     // consider using the `async-trait` crate: https://crates.io/crates/async-trait
+//     // see issue #91611 <https://github.com/rust-lang/rust/issues/91611> for more information
+//     async fn sleep(&self) {
+//       sleep(Duration::from_millis(self.sleep_ms)).await;
+//     }
+//   }
+
+//   async fn run_all_sleepers_multiple_times(sleepers: Vec<Box<dyn Sleeper>>, n_times: usize) {
+//     for _ in 0..n_times {
+//       println!("running all sleepers..");
+//       for sleeper in &sleepers {
+//         let start = Instant::now();
+//         sleeper.sleep().await;
+//         println!("slept for {}ms", start.elapsed().as_millis())
+//       }
+//     }
+//   }
+
+//   pub async fn sample_async_trait() {
+//     let sleepers: Vec<Box<dyn Sleeper>> = vec![
+//       Box::new(FixedSleeper { sleep_ms: 50 }),
+//       Box::new(FixedSleeper { sleep_ms: 100 }),
+//     ];
+//     run_all_sleepers_multiple_times(sleepers, 5).await;
+//   }
+// }
