@@ -107,6 +107,7 @@ fn main() {
   utils::concurrencies::sample_select::select();
   utils::concurrencies::sample_block_executor::blocking_executor();
   utils::concurrencies::sample_pin::pin();
+  utils::concurrencies::sample_cancellation::cancellation();
 }
 
 // Array, Vec, Slice
