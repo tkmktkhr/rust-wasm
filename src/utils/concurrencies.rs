@@ -490,7 +490,8 @@ pub mod sample_cancellation {
     async fn next(&mut self) -> io::Result<Option<String>> {
       let mut bytes = Vec::new();
       let mut buf = [0];
-      while self.stream.read(&mut buf[..]).await? != 0 { // [..] same as [0..len].
+      while self.stream.read(&mut buf[..]).await? != 0 {
+        // [..] same as [0..len].
         bytes.push(buf[0]);
         if buf[0] == b'\n' {
           println!("\\n is found");
