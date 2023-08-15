@@ -2,11 +2,11 @@ use race::fn_race;
 use std::convert::AsRef;
 use std::fmt::Debug;
 
-mod exercises;
 mod race;
 mod utils;
 
-use exercises::library;
+use utils::exercises_library::entity;
+
 
 fn main() {
   // dereference
@@ -301,9 +301,9 @@ fn life_time_2() {
 }
 
 fn library() {
-  let mut library = library::entity::Library::new();
+  let mut library = entity::Library::new();
 
-  let favorite_book = library::entity::Book::new("A sample book", 1985);
+  let favorite_book = entity::Book::new("A sample book", 1985);
   println!(
     "Our favorite book {} should go in our library.",
     favorite_book
@@ -313,7 +313,7 @@ fn library() {
   println!("3: {:p}", &library); // same pointer
   println!("Our library: {library:?}.");
 
-  let favorite_book_2 = library::entity::Book::new("A sample book 2", 1986);
+  let favorite_book_2 = entity::Book::new("A sample book 2", 1986);
   library.add_book(favorite_book_2); // same pointer
   println!("Our library 2: {library:?}.");
 
