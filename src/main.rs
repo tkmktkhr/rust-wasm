@@ -60,6 +60,7 @@ fn main() {
 
   utils::generics::generics_sample();
   utils::generics::generic_method();
+  utils::generics::trait_sample();
 
   utils::traits::trait_sample();
   utils::traits::trait_derive();
@@ -583,7 +584,7 @@ fn closure() {
   let series_range = 0..30;
   let add = 1;
   // let chunks: Vec<_> = (0..3).map(|ii| (0..30).skip(ii).step_by(3)).collect();
-  let mut chunks = (0..N_THREADS).map(|ii| series_range.clone().skip(ii).step_by(N_THREADS)); // executed until it needs to be.
+  let chunks = (0..N_THREADS).map(|ii| series_range.clone().skip(ii).step_by(N_THREADS)); // executed until it needs to be.
   println!("{chunks:?}");
   // println!("{:?}", chunks.next()); // first element of array is skipped.
 

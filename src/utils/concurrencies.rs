@@ -222,14 +222,14 @@ pub async fn tokio_sample() {
   println!("tokio sample!");
   let handle = tokio::spawn(tokio_count_to(10)); // Why does count_to not (usually) get to 10? This is an example of async cancellation. tokio::spawn returns a handle which can be awaited to wait until it finishes.
 
-  // handle.await; // this awaits the spawn thread all(count) processes, then goes main tasks execution.
+  // let _ = handle.await; // this awaits the spawn thread all(count) processes, then goes main tasks execution.
 
   for i in 1..5 {
     println!("Main task: {i}");
     time::sleep(time::Duration::from_millis(5)).await;
     println!("Main task done: {i}");
   }
-  handle.await; // this awaits the spawn thread all(count) processes. Main and Sub tasks are executed at the same time.
+  let _ = handle.await; // this awaits the spawn thread all(count) processes. Main and Sub tasks are executed at the same time.
 }
 
 // Tasks
