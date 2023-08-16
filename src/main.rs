@@ -5,7 +5,7 @@ use std::fmt::Debug;
 mod race;
 mod utils;
 
-use utils::exercises_library::entity;
+use utils::exercises::library;
 
 
 fn main() {
@@ -71,8 +71,8 @@ fn main() {
   utils::traits::from_iterator();
   utils::traits::from_sample();
   utils::traits::into_sample();
-  utils::traits::read_sample();
-  utils::traits::write_sample();
+  let _  = utils::traits::read_sample();
+  let _  = utils::traits::write_sample();
   utils::traits::drop_sample();
   utils::traits::default_sample();
   utils::traits::add_sample();
@@ -108,7 +108,7 @@ fn main() {
   utils::concurrencies::sample_select::select();
   utils::concurrencies::sample_block_executor::blocking_executor();
   utils::concurrencies::sample_pin::pin();
-  utils::concurrencies::sample_cancellation::cancellation();
+  let _ = utils::concurrencies::sample_cancellation::cancellation();
 }
 
 // Array, Vec, Slice
@@ -302,9 +302,9 @@ fn life_time_2() {
 }
 
 fn library() {
-  let mut library = entity::Library::new();
+  let mut library = library::Library::new();
 
-  let favorite_book = entity::Book::new("A sample book", 1985);
+  let favorite_book = library::Book::new("A sample book", 1985);
   println!(
     "Our favorite book {} should go in our library.",
     favorite_book
@@ -314,7 +314,7 @@ fn library() {
   println!("3: {:p}", &library); // same pointer
   println!("Our library: {library:?}.");
 
-  let favorite_book_2 = entity::Book::new("A sample book 2", 1986);
+  let favorite_book_2 = library::Book::new("A sample book 2", 1986);
   library.add_book(favorite_book_2); // same pointer
   println!("Our library 2: {library:?}.");
 

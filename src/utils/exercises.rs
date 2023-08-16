@@ -1,4 +1,4 @@
-pub mod entity {
+pub mod library {
   #[derive(Debug)]
   pub struct Library {
     pub books: Vec<Book>,

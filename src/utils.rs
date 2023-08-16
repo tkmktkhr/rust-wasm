@@ -1,6 +1,6 @@
 pub mod concurrencies;
 pub mod errors;
-pub mod exercises_library;
+pub mod exercises;
 pub mod generics;
 pub mod results;
 pub mod tests;
