@@ -5,7 +5,7 @@ use std::fmt::Debug;
 mod race;
 mod utils;
 
-use utils::exercises::library;
+use utils::exercises::storing_book::library;
 
 fn main() {
   // dereference
