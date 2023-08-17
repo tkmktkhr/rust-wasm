@@ -7,7 +7,6 @@ mod utils;
 
 use utils::exercises::library;
 
-
 fn main() {
   // dereference
   let mut x: _ = 10; // _ i> i32
@@ -71,8 +70,8 @@ fn main() {
   utils::traits::from_iterator();
   utils::traits::from_sample();
   utils::traits::into_sample();
-  let _  = utils::traits::read_sample();
-  let _  = utils::traits::write_sample();
+  let _ = utils::traits::read_sample();
+  let _ = utils::traits::write_sample();
   utils::traits::drop_sample();
   utils::traits::default_sample();
   utils::traits::add_sample();

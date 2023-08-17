@@ -1,7 +1,7 @@
 // Adding context to Errors
 use anyhow::{bail, Context, Result};
-use std::io::Read;
 use std::fs;
+use std::io::Read;
 
 fn read_username(path: &str) -> Result<String> {
   // type alias for Result<V, anyhow::Error>.
