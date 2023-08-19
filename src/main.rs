@@ -108,6 +108,9 @@ fn main() {
   utils::concurrencies::sample_block_executor::blocking_executor();
   utils::concurrencies::sample_pin::pin();
   let _ = utils::concurrencies::sample_cancellation::cancellation();
+
+  // exercises
+  utils::exercises::array_for_loops::array_for_loops::output();
 }
 
 // Array, Vec, Slice
