@@ -304,6 +304,7 @@ fn life_time_2() {
 }
 
 fn library() {
+  println!("start library---------------------------------------");
   let mut library = library::Library::new();
 
   let favorite_book = library::Book::new("A sample book", 1985);
@@ -320,9 +321,10 @@ fn library() {
   library.add_book(favorite_book_2); // same pointer
   println!("Our library 2: {library:?}.");
 
-  for book in library.books {
+  for book in &library.books {
     println!("{book}");
   }
+  println!("Return the length of `self.books`: {}", &library.get_len())
 }
 
 fn iterator() {

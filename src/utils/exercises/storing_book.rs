@@ -31,9 +31,10 @@ pub mod library {
       Library { books: vec![] }
     }
 
-    // fn len(self) -> usize {
-
-    // }
+    pub fn get_len(self) -> usize {
+      //  todo!("Return the length of `self.books`")
+      self.books.len()
+    }
 
     pub fn add_book(&mut self, book: Book) {
       println!("2: {:p}", self);

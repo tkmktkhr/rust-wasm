@@ -14,7 +14,7 @@ pub mod array_for_loops {
   fn pretty_print(matrix: &[[i32; 3]; 3]) {
     // unimplemented!()
     for i in matrix.iter() {
-        println!("[ {}, {}, {}]", i[0],i[1],i[2]);
+      println!("[ {}, {}, {}]", i[0], i[1], i[2]);
     }
   }
 
