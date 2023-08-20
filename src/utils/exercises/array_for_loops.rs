@@ -1,8 +1,15 @@
 pub mod array_for_loops {
   #![allow(unused_variables, dead_code)]
 
-  // fn transpose(matrix: [[i32; 3]; 3]) -> [[i32; 3]; 3] {
-  // }
+  fn transpose(matrix: [[i32; 3]; 3]) -> [[i32; 3]; 3] {
+    let mut new: [[i32; 3]; 3] = [[0; 3]; 3];
+    for i in 0..matrix.len() {
+      for j in 0..matrix.len() {
+        new[i][j] = matrix[j][i]
+      }
+    }
+    new
+  }
 
   fn pretty_print(matrix: &[[i32; 3]; 3]) {
     // unimplemented!()
@@ -18,12 +25,11 @@ pub mod array_for_loops {
       [301, 302, 303],
     ];
 
-    // println!("matrix:");
-    // pretty_print(&matrix);
-
-    // let transposed = transpose(matrix);
-    println!("transposed:");
-    // pretty_print(&transposed);
+    println!("matrix:");
     pretty_print(&matrix);
+
+    let transposed = transpose(matrix);
+    println!("transposed:");
+    pretty_print(&transposed);
   }
 }

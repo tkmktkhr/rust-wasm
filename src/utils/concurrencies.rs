@@ -529,7 +529,7 @@ pub mod sample_cancellation {
           line = lines.next() => if let Some(l) = line? {
               print!("{}", l)
           } else {
-              print!("breaking!!!!");
+              println!("breaking!!!!");
               break
           },
       }
