@@ -303,7 +303,7 @@ fn life_time_2() {
   erase(text) // ok
 }
 
-fn library() {
+fn library() -> () {
   println!("start library---------------------------------------");
   let mut library = library::Library::new();
   println!("0 books?: {}", &library.get_is_empty());
@@ -326,6 +326,7 @@ fn library() {
   }
   println!("0 books?: {}", &library.get_is_empty());
   println!("Return the length of `self.books`: {}", &library.get_len());
+  let _ = &library.print_books();
 }
 
 fn iterator() {

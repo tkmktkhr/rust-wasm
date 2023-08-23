@@ -45,5 +45,11 @@ pub mod library {
       println!("2: {:p}", self);
       self.books.push(book)
     }
+
+    pub fn print_books(&self) -> () {
+      for (i, book) in self.books.iter().enumerate() {
+        println!("No{}: title [{}], year [{}]", i, book.title, book.year);
+      }
+    }
   }
 }
