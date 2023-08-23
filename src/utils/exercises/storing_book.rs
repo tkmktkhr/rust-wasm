@@ -51,5 +51,17 @@ pub mod library {
         println!("No{}: title [{}], year [{}]", i, book.title, book.year);
       }
     }
+
+    pub fn get_oldest_book(&self) -> Option<&Book> {
+      //  todo!("Return a reference to the oldest book (if any)")
+      let oldest = self.books.iter().min_by(|a, b| a.year.cmp(&b.year));
+      // let mut oldest = None;
+      // for book in self.books.iter() {
+      //   if oldest.is_none() || book.year < oldest.unwrap().year {
+      //     oldest = Some(book);
+      //   }
+      // }
+      oldest
+    }
   }
 }

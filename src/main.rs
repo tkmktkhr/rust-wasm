@@ -317,6 +317,8 @@ fn library() -> () {
   println!("3: {:p}", &library); // same pointer
   println!("Our library: {library:?}.");
 
+  let book0 = library::Book::new("A sample book 1", 1912);
+  library.add_book(book0); // same pointer
   let favorite_book_2 = library::Book::new("A sample book 2", 1986);
   library.add_book(favorite_book_2); // same pointer
   println!("Our library 2: {library:?}.");
@@ -326,6 +328,7 @@ fn library() -> () {
   }
   println!("0 books?: {}", &library.get_is_empty());
   println!("Return the length of `self.books`: {}", &library.get_len());
+  println!("{:?}", &library.get_oldest_book());
   let _ = &library.print_books();
 }
 
