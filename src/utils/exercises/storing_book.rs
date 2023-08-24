@@ -65,3 +65,13 @@ pub mod library {
     }
   }
 }
+
+#[test]
+fn test_get_is_empty() {
+  use super::storing_book::library::{Library, Book};
+
+  let mut library = library::Library::new();
+  assert_eq!(library.get_is_empty(), true);
+  library.add_book(Book::new("test_book", 2020));
+  assert_eq!(library.get_is_empty(), false);
+}
