@@ -4,7 +4,7 @@ pub mod library {
     pub books: Vec<Book>,
   }
 
-  #[derive(Debug)]
+  #[derive(Debug, PartialEq, Clone)]
   pub struct Book {
     title: String,
     year: u16,
@@ -43,7 +43,7 @@ pub mod library {
 
     pub fn add_book(&mut self, book: Book) {
       println!("2: {:p}", self);
-      self.books.push(book)
+      self.books.push(book);
     }
 
     pub fn print_books(&self) -> () {
@@ -68,13 +68,25 @@ pub mod library {
 
 #[cfg(test)]
 mod library_tests {
+  use super::library::{self, Book, Library};
   #[test]
   fn test_get_is_empty() {
-    use super::library::{self, Book, Library};
 
     let mut library: Library = library::Library::new();
     assert_eq!(library.get_is_empty(), true);
     library.add_book(Book::new("test_book", 2020));
     assert_eq!(library.get_is_empty(), false);
+  }
+
+  #[test]
+  fn test_add_books() {
+    let mut library = library::Library::new();
+    let new_book1 = Book::new("book1", 1990);
+    let expected = new_book1.clone();
+
+    library.add_book(new_book1);
+    
+    let first_book = &library.books[0];
+    assert_eq!(first_book, &expected);
   }
 }
