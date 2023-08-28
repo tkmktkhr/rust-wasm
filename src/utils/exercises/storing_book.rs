@@ -89,4 +89,18 @@ mod library_tests {
     let first_book = &library.books[0];
     assert_eq!(first_book, &expected);
   }
+
+  #[test]
+  fn test_get_oldest_book() {
+    let mut library = library::Library::new();
+    library.add_book(Book::new("first book", 1990));
+    library.add_book(Book::new("second book", 1995));
+    library.add_book(Book::new("third book", 2000));
+    library.add_book(Book::new("third book", 1990));
+
+    let oldest_book = library.get_oldest_book().unwrap();
+    let expected = Book::new("first book", 1990);
+    assert_eq!(library.get_len() , 4);
+    assert_eq!(oldest_book ,&expected)
+  }
 }
