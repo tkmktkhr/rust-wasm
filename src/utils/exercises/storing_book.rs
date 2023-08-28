@@ -71,7 +71,6 @@ mod library_tests {
   use super::library::{self, Book, Library};
   #[test]
   fn test_get_is_empty() {
-
     let mut library: Library = library::Library::new();
     assert_eq!(library.get_is_empty(), true);
     library.add_book(Book::new("test_book", 2020));
@@ -85,7 +84,7 @@ mod library_tests {
     let expected = new_book1.clone();
 
     library.add_book(new_book1);
-    
+
     let first_book = &library.books[0];
     assert_eq!(first_book, &expected);
   }
@@ -100,7 +99,7 @@ mod library_tests {
 
     let oldest_book = library.get_oldest_book().unwrap();
     let expected = Book::new("first book", 1990);
-    assert_eq!(library.get_len() , 4);
-    assert_eq!(oldest_book ,&expected)
+    assert_eq!(library.get_len(), 4);
+    assert_eq!(oldest_book, &expected)
   }
 }
