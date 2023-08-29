@@ -1,4 +1,4 @@
-pub fn prefix_matches(prefix: &str, request_path: &str) -> bool {
+fn prefix_matches(prefix: &str, request_path: &str) -> bool {
   let mut split_request_path = request_path.split("/");
   for prefix_segment in prefix.split('/') {
     let Some(request_segment) = split_request_path.next() else {
