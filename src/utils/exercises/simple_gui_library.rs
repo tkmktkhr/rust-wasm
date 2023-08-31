@@ -29,11 +29,20 @@ impl Label {
 // window.add_widget(Box::new(Label::new("This is a small text GUI demo.")));
 impl Widget for Label {
   fn width(&self) -> usize {
-    self.label.len()
+    self
+      .label
+      .lines()
+      .map(|line| line.chars().count())
+      .max()
+      .unwrap_or(0)
   }
 
   fn draw_into(&self, buffer: &mut dyn std::fmt::Write) {
-    unimplemented!()
+    println!("widget label: draw into");
+    println!("{:^1$}", self.label, self.width());
+    // You can use named arguments in the format specifier by appending a `$`.
+    // println!("{number:0>width$}", number=1, width=5);
+    writeln!(buffer, "{:^1$}", self.label, self.width()).unwrap();
   }
 }
 
@@ -76,8 +85,6 @@ impl Window {
   }
 }
 
-
-
 // impl Widget for Button {
 //   fn width(&self) -> usize {
 //       unimplemented!()
@@ -101,9 +108,9 @@ impl Window {
 fn simple_gui_library() {
   let mut window = Window::new("Rust GUI Demo 1.23");
   window.add_widget(Box::new(Label::new("This is a small text GUI demo.")));
-  window.add_widget(Box::new(Button::new(
-    "Click me!",
-    Box::new(|| println!("You clicked the button!")),
-  )));
-  window.draw();
+  // window.add_widget(Box::new(Button::new(
+  //   "Click me!",
+  //   Box::new(|| println!("You clicked the button!")),
+  // )));
+  // window.draw();
 }
