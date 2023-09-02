@@ -216,6 +216,13 @@ fn str_string() {
 
   println!("string.as_str: {}", string.as_str());
   println!("{:p}", string.as_str());
+
+  let s = "a b c \nd e f g h i".to_owned();
+  let line = s.lines();
+  println!("{:?}", line);
+  let mapped = line.map(|line| line.chars().count()).max().unwrap_or(0);
+  println!("{:?}", mapped);
+  println!("{:?}", s.len());
 }
 
 const DIGEST_SIZE: usize = 3; // usize is u32 or u64. // inlined upon use.
