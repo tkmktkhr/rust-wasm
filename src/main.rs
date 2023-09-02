@@ -20,6 +20,7 @@ fn main() {
   println!("s: {slice:?}"); // :? is for debug.
   sample();
   type_inference();
+  str_string();
   static_constant();
   banner();
   shadowing();
@@ -195,6 +196,26 @@ fn type_inference() {
   // let vv = v.iter().collect::<std::collections::HashSet<&(i32, bool)>>(); // don't need to write this.
   let vv = v.iter().collect::<std::collections::HashSet<_>>();
   println!("vv: {vv:?}")
+}
+
+fn str_string() {
+  println!("str_string---------------------------------------");
+  let str: &str = "test";
+  let string: String = "test1".to_string();
+  println!("str: {}", str);
+  println!("{:p}", str);
+
+  println!("str.to_owned: {}", str.to_owned());
+  println!("{:p}", str.to_owned().as_ptr());
+
+  println!("str.to_string: {}", str.to_string());
+  println!("{:p}", str.to_string().as_ptr());
+
+  println!("string: {}", string);
+  println!("{:p}", string.as_ptr());
+
+  println!("string.as_str: {}", string.as_str());
+  println!("{:p}", string.as_str());
 }
 
 const DIGEST_SIZE: usize = 3; // usize is u32 or u64. // inlined upon use.
