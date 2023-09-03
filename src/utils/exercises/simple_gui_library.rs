@@ -20,7 +20,7 @@ pub struct Label {
 impl Label {
   fn new(label: &str) -> Label {
     Label {
-      label: label.to_owned(),
+      label: label.to_owned(), // Creates owned data from borrowed data, usually by cloning.
     }
   }
 }
@@ -35,13 +35,14 @@ impl Widget for Label {
       .map(|line| line.chars().count())
       .max()
       .unwrap_or(0)
+    // if label is just 1 line, label.len() should be fine.
   }
 
   fn draw_into(&self, buffer: &mut dyn std::fmt::Write) {
     println!("widget label: draw into");
-    println!("{:^1$}", self.label, self.width());
-    // You can use named arguments in the format specifier by appending a `$`.
-    // println!("{number:0>width$}", number=1, width=5);
+    println!("{:^1$}", self.label, self.width()); // self.width must be 30.
+                                                  // You can use named arguments in the format specifier by appending a `$`.
+                                                  // println!("{number:0>width$}", number=1, width=5);
     writeln!(buffer, "{:^1$}", self.label, self.width()).unwrap();
   }
 }
@@ -59,6 +60,16 @@ impl Button {
     }
   }
 }
+
+// impl Widget for Button {
+//   fn width(&self) -> usize {
+//       unimplemented!()
+//   }
+
+//   fn draw_into(&self, buffer: &mut dyn std::fmt::Write) {
+//       unimplemented!()
+//   }
+// }
 
 pub struct Window {
   title: String,
@@ -84,16 +95,6 @@ impl Window {
     )
   }
 }
-
-// impl Widget for Button {
-//   fn width(&self) -> usize {
-//       unimplemented!()
-//   }
-
-//   fn draw_into(&self, buffer: &mut dyn std::fmt::Write) {
-//       unimplemented!()
-//   }
-// }
 
 // impl Widget for Window {
 //   fn width(&self) -> usize {
