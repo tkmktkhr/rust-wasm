@@ -223,6 +223,7 @@ fn str_string() {
   let mapped = line.map(|line| line.chars().count()).max().unwrap_or(0);
   println!("{:?}", mapped);
   println!("{:?}", s.len());
+  println!("{:^1$}", str.to_owned(), str.len());
 }
 
 const DIGEST_SIZE: usize = 3; // usize is u32 or u64. // inlined upon use.
