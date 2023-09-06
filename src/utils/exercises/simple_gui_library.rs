@@ -104,15 +104,35 @@ impl Window {
   }
 }
 
-// impl Widget for Window {
-//   fn width(&self) -> usize {
-//       unimplemented!()
-//   }
+impl Widget for Window {
+  fn width(&self) -> usize {
+    // ANCHOR_END: Window-width
+    // Add 4 paddings for borders
+    self.inner_width() + 4
+  }
 
-// fn draw_into(&self, buffer: &mut dyn std::fmt::Write) {
-//       unimplemented!()
-//   }
-// }
+  // ANCHOR: Window-draw_into
+  fn draw_into(&self, buffer: &mut dyn std::fmt::Write) {
+    // ANCHOR_END: Window-draw_into
+    let mut inner = String::new();
+    for widget in &self.widgets {
+      widget.draw_into(&mut inner);
+    }
+
+    let inner_width = self.inner_width();
+
+    // TODO: after learning about error handling, you can change
+    // draw_into to return Result<(), std::fmt::Error>. Then use
+    // the ?-operator here instead of .unwrap().
+    writeln!(buffer, "+-{:-<inner_width$}-+", "").unwrap();
+    writeln!(buffer, "| {:^inner_width$} |", &self.title).unwrap();
+    writeln!(buffer, "+={:=<inner_width$}=+", "").unwrap();
+    for line in inner.lines() {
+      writeln!(buffer, "| {:inner_width$} |", line).unwrap();
+    }
+    writeln!(buffer, "+-{:-<inner_width$}-+", "").unwrap();
+  }
+}
 
 fn simple_gui_library() {
   let mut window = Window::new("Rust GUI Demo 1.23");
