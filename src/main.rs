@@ -112,6 +112,7 @@ fn main() {
 
   // exercises
   utils::exercises::array_for_loops::array_for_loops::output();
+  utils::exercises::simple_gui_library::simple_gui_library();
 }
 
 // Array, Vec, Slice
