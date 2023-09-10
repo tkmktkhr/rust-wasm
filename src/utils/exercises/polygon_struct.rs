@@ -30,4 +30,10 @@ pub enum Shape {
 }
 
 #[allow(dead_code)]
-fn polygon_struct() {}
+fn polygon_struct() {
+    use super::*;
+    
+    fn round_two_digits(x: f64) -> f64 {
+        (x * 100.0).round() / 100.0
+    }
+}
