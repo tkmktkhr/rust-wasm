@@ -10,9 +10,12 @@ impl Point {
   }
 
   fn magnitude(&self) -> f64 {
-    let pow_x = self.x.pow(2) as f64;
-    let pow_y = self.y.pow(2) as f64;
-    (pow_x + pow_y).sqrt()
+    let pow_x = self.x.pow(2);
+    let pow_y = self.y.pow(2);
+    f64::from(pow_x + pow_y).sqrt()
+    // let pow_x = self.x.pow(2) as f64;
+    // let pow_y = self.y.pow(2) as f64;
+    // (pow_x + pow_y).sqrt()
   }
 
   fn dist(&self, p: Point) -> f64 {
@@ -53,15 +56,15 @@ mod tests {
 
   #[test]
   fn test_point_magnitude() {
-      let p1 = Point::new(12, 13);
-      assert_eq!(round_two_digits(p1.magnitude()), 17.69);
+    let p1 = Point::new(12, 13);
+    assert_eq!(round_two_digits(p1.magnitude()), 17.69);
   }
 
   #[test]
   fn test_point_dist() {
-      let p1 = Point::new(10, 10);
-      let p2 = Point::new(14, 13);
-      assert_eq!(round_two_digits(p1.dist(p2)), 5.00);
+    let p1 = Point::new(10, 10);
+    let p2 = Point::new(14, 13);
+    assert_eq!(round_two_digits(p1.dist(p2)), 5.00);
   }
 }
 
