@@ -14,6 +14,12 @@ impl Point {
     let pow_y = self.y.pow(2) as f64;
     (pow_x + pow_y).sqrt()
   }
+
+  fn dist(&self, p: Point) -> f64 {
+    let dist_x = (p.x - self.x).abs() as f64;
+    let dist_y = (p.y - self.y).abs() as f64;
+    (dist_x.powi(2) + dist_y.powi(2)).sqrt()
+  }
 }
 
 pub struct Polygon {
@@ -51,6 +57,12 @@ mod tests {
       assert_eq!(round_two_digits(p1.magnitude()), 17.69);
   }
 
+  #[test]
+  fn test_point_dist() {
+      let p1 = Point::new(10, 10);
+      let p2 = Point::new(14, 13);
+      assert_eq!(round_two_digits(p1.dist(p2)), 5.00);
+  }
 }
 
 pub fn polygon_struct() {
