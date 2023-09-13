@@ -1,3 +1,4 @@
+#[derive(Debug, PartialEq)]
 pub struct Point {
   x: i32,
   y: i32,
@@ -22,6 +23,29 @@ impl Point {
     let dist_x = (p.x - self.x).abs() as f64;
     let dist_y = (p.y - self.y).abs() as f64;
     (dist_x.powi(2) + dist_y.powi(2)).sqrt()
+    // (self - other).magnitude()
+  }
+}
+
+impl std::ops::Add for Point {
+  type Output = Self;
+
+  fn add(self, other: Self) -> Self::Output {
+    Self {
+      x: self.x + other.x,
+      y: self.y + other.y,
+    }
+  }
+}
+
+impl std::ops::Sub for Point {
+  type Output = Self;
+
+  fn sub(self, other: Self) -> Self::Output {
+    Self {
+      x: self.x - other.x,
+      y: self.y - other.y,
+    }
   }
 }
 
@@ -65,6 +89,13 @@ mod tests {
     let p1 = Point::new(10, 10);
     let p2 = Point::new(14, 13);
     assert_eq!(round_two_digits(p1.dist(p2)), 5.00);
+  }
+
+  #[test]
+  fn test_point_add() {
+    let p1 = Point::new(16, 16);
+    let p2 = p1 + Point::new(-4, 3);
+    assert_eq!(p2, Point::new(12, 19));
   }
 }
 
