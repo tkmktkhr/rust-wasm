@@ -197,7 +197,16 @@ fn type_inference() {
 
   // let vv = v.iter().collect::<std::collections::HashSet<&(i32, bool)>>(); // don't need to write this.
   let vv = v.iter().collect::<std::collections::HashSet<_>>();
-  println!("vv: {vv:?}")
+  println!("vv: {vv:?}");
+
+  let not_cloned = vec![1, 2, 3];
+  let cloned = &not_cloned.iter().copied();
+  println!("{:?}", not_cloned);
+  println!("pointer {:p}", not_cloned.as_ptr());
+  println!("{:?}", cloned);
+  println!("pointer {:p}", cloned);
+
+  println!("---------vector")
 }
 
 fn str_string() {

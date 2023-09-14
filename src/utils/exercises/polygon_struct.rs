@@ -1,4 +1,4 @@
-#[derive(Debug, PartialEq)]
+#[derive(Debug, PartialEq, Copy, Clone, Eq)]
 pub struct Point {
   x: i32,
   y: i32,
@@ -51,10 +51,25 @@ impl std::ops::Sub for Point {
 
 pub struct Polygon {
   // add fields
+  points: Vec<Point>,
 }
 
 impl Polygon {
-  // add methods
+  fn new() -> Self {
+    Polygon { points: Vec::new() }
+  }
+
+  fn add_point(&mut self, point: Point) {
+    self.points.push(point)
+  }
+
+  fn left_most_point(&self) -> Option<Point> {
+    self.points.iter().min_by_key(|p| p.x).copied()
+  }
+
+  fn iter(&self) -> impl Iterator<Item = &Point> {
+    self.points.iter()
+  }
 }
 
 pub struct Circle {
@@ -96,6 +111,32 @@ mod tests {
     let p1 = Point::new(16, 16);
     let p2 = p1 + Point::new(-4, 3);
     assert_eq!(p2, Point::new(12, 19));
+  }
+
+  #[test]
+  fn test_polygon_left_most_point() {
+    let p1 = Point::new(12, 13);
+    let p2 = Point::new(16, 16);
+
+    let mut poly = Polygon::new();
+    assert_eq!(poly.left_most_point(), None);
+    poly.add_point(p1);
+    poly.add_point(p2);
+    assert_eq!(poly.left_most_point(), Some(p1));
+  }
+
+  #[test]
+  fn test_polygon_iter() {
+    let p1 = Point::new(12, 13);
+    let p2 = Point::new(16, 16);
+
+    let mut poly = Polygon::new();
+    poly.add_point(p1);
+    poly.add_point(p2);
+
+    // let points = poly.points.iter().cloned().collect::<Vec<_>>();
+    let points = poly.iter().cloned().collect::<Vec<_>>();
+    assert_eq!(points, vec![Point::new(12, 13), Point::new(16, 16)]);
   }
 }
 
