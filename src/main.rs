@@ -17,103 +17,105 @@ fn main() {
   let a: [i32; 6] = [10, 20, 30, 40, 50, 60];
 
   let slice: &[_] = &a[2..]; // _ i> i32
+
   println!("s: {slice:?}"); // :? is for debug.
-  sample();
-  type_inference();
-  str_string();
-  static_constant();
-  banner();
-  shadowing();
-  stack_memory();
-  copy_clone();
-  life_time_1();
-  life_time_2();
-  library();
-  iterator();
-  into_iterator();
-  sample_struct();
-  new_type_idiom();
-  create_default();
-  sample_basic_enum();
-  variant_payloads();
-  enum_size();
-  method();
-  fn_race();
-  pattern_matching();
-  destructure_enum();
-  destructure_struct();
-  destructure_tuple();
-  closure();
-  destructure_array();
-  match_guards();
-  block();
-  if_let();
-  endless_loop();
-  break_continue();
+  // if you run functions, remove comment out.
+  // sample();
+  // type_inference();
+  // str_string();
+  // static_constant();
+  // banner();
+  // shadowing();
+  // stack_memory();
+  // copy_clone();
+  // life_time_1();
+  // life_time_2();
+  // library();
+  // iterator();
+  // into_iterator();
+  // sample_struct();
+  // new_type_idiom();
+  // create_default();
+  // sample_basic_enum();
+  // variant_payloads();
+  // enum_size();
+  // method();
+  // fn_race();
+  // pattern_matching();
+  // destructure_enum();
+  // destructure_struct();
+  // destructure_tuple();
+  // closure();
+  // destructure_array();
+  // match_guards();
+  // block();
+  // if_let();
+  // endless_loop();
+  // break_continue();
 
-  utils::tools::option_result();
-  utils::tools::string_sample();
-  utils::tools::vec_sample();
-  utils::tools::hash_map();
-  utils::tools::box_sample();
-  utils::tools::rc();
+  // utils::tools::option_result();
+  // utils::tools::string_sample();
+  // utils::tools::vec_sample();
+  // utils::tools::hash_map();
+  // utils::tools::box_sample();
+  // utils::tools::rc();
 
-  utils::generics::generics_sample();
-  utils::generics::generic_method();
-  utils::generics::trait_sample();
+  // utils::generics::generics_sample();
+  // utils::generics::generic_method();
+  // utils::generics::trait_sample();
 
-  utils::traits::trait_sample();
-  utils::traits::trait_derive();
-  utils::traits::trait_default_method();
-  utils::traits::trait_bounds();
-  utils::traits::trait_impl();
-  utils::traits::iterators();
-  utils::traits::from_iterator();
-  utils::traits::from_sample();
-  utils::traits::into_sample();
-  let _ = utils::traits::read_sample();
-  let _ = utils::traits::write_sample();
-  utils::traits::drop_sample();
-  utils::traits::default_sample();
-  utils::traits::add_sample();
-  utils::traits::closure_sample();
+  // utils::traits::trait_sample();
+  // utils::traits::trait_derive();
+  // utils::traits::trait_default_method();
+  // utils::traits::trait_bounds();
+  // utils::traits::trait_impl();
+  // utils::traits::iterators();
+  // utils::traits::from_iterator();
+  // utils::traits::from_sample();
+  // utils::traits::into_sample();
+  // let _ = utils::traits::read_sample();
+  // let _ = utils::traits::write_sample();
+  // utils::traits::drop_sample();
+  // utils::traits::default_sample();
+  // utils::traits::add_sample();
+  // utils::traits::closure_sample();
 
-  utils::results::file_read1();
-  utils::results::file_read2();
+  // utils::results::file_read1();
+  // utils::results::file_read2();
 
-  utils::errors::add_context_error();
+  // utils::errors::add_context_error();
 
-  utils::tests::first_word("abc def ghi");
+  // utils::tests::first_word("abc def ghi");
 
-  utils::unsafes::unsafe_sample();
-  utils::unsafes::safe_static();
-  utils::unsafes::unsafe_static();
-  utils::unsafes::unsafe_union();
-  utils::unsafes::unsafe_func();
-  utils::unsafes::unsafe_swap();
-  utils::unsafes::unsafe_extern();
+  // utils::unsafes::unsafe_sample();
+  // utils::unsafes::safe_static();
+  // utils::unsafes::unsafe_static();
+  // utils::unsafes::unsafe_union();
+  // utils::unsafes::unsafe_func();
+  // utils::unsafes::unsafe_swap();
+  // utils::unsafes::unsafe_extern();
 
-  utils::concurrencies::conc_thread();
+  // utils::concurrencies::conc_thread();
   // utils::concurrencies::normal_scoped_thread();
-  utils::concurrencies::channel_thread();
-  utils::concurrencies::unbounded_channel();
-  utils::concurrencies::bounded_channel();
-  utils::concurrencies::shared_state::arc();
-  utils::concurrencies::shared_state::mutex();
-  utils::concurrencies::shared_state::arc_mutex();
-  utils::concurrencies::async_sample();
-  utils::concurrencies::tokio_sample();
-  utils::concurrencies::sample_async_channels::async_channels();
-  utils::concurrencies::sample_join::join();
-  utils::concurrencies::sample_select::select();
-  utils::concurrencies::sample_block_executor::blocking_executor();
-  utils::concurrencies::sample_pin::pin();
-  let _ = utils::concurrencies::sample_cancellation::cancellation();
+  // utils::concurrencies::channel_thread();
+  // utils::concurrencies::unbounded_channel();
+  // utils::concurrencies::bounded_channel();
+  // utils::concurrencies::shared_state::arc();
+  // utils::concurrencies::shared_state::mutex();
+  // utils::concurrencies::shared_state::arc_mutex();
+  // utils::concurrencies::async_sample();
+  // utils::concurrencies::tokio_sample();
+  // utils::concurrencies::sample_async_channels::async_channels();
+  // utils::concurrencies::sample_join::join();
+  // utils::concurrencies::sample_select::select();
+  // utils::concurrencies::sample_block_executor::blocking_executor();
+  // utils::concurrencies::sample_pin::pin();
+  // let _ = utils::concurrencies::sample_cancellation::cancellation();
 
   // exercises
-  utils::exercises::array_for_loops::array_for_loops::output();
-  utils::exercises::simple_gui_library::simple_gui_library();
-  utils::exercises::polygon_struct::polygon_struct();
+  // utils::exercises::array_for_loops::array_for_loops::output();
+  // utils::exercises::simple_gui_library::simple_gui_library();
+  // utils::exercises::polygon_struct::polygon_struct();
 }
 
 // Array, Vec, Slice
