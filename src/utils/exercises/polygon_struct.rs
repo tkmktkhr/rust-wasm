@@ -70,19 +70,62 @@ impl Polygon {
   fn iter(&self) -> impl Iterator<Item = &Point> {
     self.points.iter()
   }
+
+  fn length(&self) -> f64 {
+    let mut res = 0.0;
+    if self.points.is_empty() {
+      return res;
+    };
+    let mut last_point = self.points[0];
+    for point in &self.points[1..] {
+      res += last_point.dist(*point);
+      last_point = *point;
+    }
+    res += last_point.dist(self.points[0]);
+    res
+  }
 }
 
 pub struct Circle {
-  // add fields
+  center: Point,
+  radius: i32,
 }
 
 impl Circle {
   // add methods
+  fn new(center: Point, radius: i32) -> Self {
+    Circle { center, radius }
+  }
+
+  pub fn circumference(&self) -> f64 {
+    2.0 * std::f64::consts::PI * f64::from(self.radius)
+  }
 }
 
 pub enum Shape {
   Polygon(Polygon),
   Circle(Circle),
+}
+
+impl From<Polygon> for Shape {
+  fn from(polygon: Polygon) -> Self {
+    Shape::Polygon(polygon)
+  }
+}
+
+impl From<Circle> for Shape {
+  fn from(circle: Circle) -> Self {
+    Shape::Circle(circle)
+  }
+}
+
+impl Shape {
+  pub fn perimeter(&self) -> f64 {
+    match self {
+      Shape::Polygon(poly) => poly.length(),
+      Shape::Circle(circle) => circle.circumference(),
+    }
+  }
 }
 
 #[cfg(test)]
@@ -137,6 +180,26 @@ mod tests {
     // let points = poly.points.iter().cloned().collect::<Vec<_>>();
     let points = poly.iter().cloned().collect::<Vec<_>>();
     assert_eq!(points, vec![Point::new(12, 13), Point::new(16, 16)]);
+  }
+
+  #[test]
+  fn test_shape_perimeters() {
+    let mut poly = Polygon::new();
+    poly.add_point(Point::new(12, 13));
+    poly.add_point(Point::new(17, 11));
+    poly.add_point(Point::new(16, 16));
+    let shapes = vec![
+      Shape::Polygon(poly),
+      // Shape::from(poly),
+      Shape::Circle(Circle::new(Point::new(10, 20), 5)),
+      // Shape::from(Circle::new(Point::new(10, 20), 5)),
+    ];
+    let perimeters = shapes
+      .iter()
+      .map(Shape::perimeter)
+      .map(round_two_digits)
+      .collect::<Vec<_>>();
+    assert_eq!(perimeters, vec![15.48, 31.42]);
   }
 }
 
