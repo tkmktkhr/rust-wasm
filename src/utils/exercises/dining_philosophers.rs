@@ -28,7 +28,7 @@ impl Philosopher {
 static PHILOSOPHERS: &[&str] =
     &["Socrates", "Plato", "Aristotle", "Thales", "Pythagoras"];
 
-fn main() {
+pub fn dining_philosophers() {
     // Create forks
 
     // Create philosophers
