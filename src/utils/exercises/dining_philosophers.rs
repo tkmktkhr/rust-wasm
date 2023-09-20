@@ -6,8 +6,8 @@ struct Fork;
 
 struct Philosopher {
     name: String,
-    // left_fork: ...
-    // right_fork: ...
+    left_fork: Arc<Mutex<Fork>>,
+    right_fork: Arc<Mutex<Fork>>,
     // thoughts: ...
 }
 
