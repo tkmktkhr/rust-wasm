@@ -8,7 +8,7 @@ struct Philosopher {
     name: String,
     left_fork: Arc<Mutex<Fork>>,
     right_fork: Arc<Mutex<Fork>>,
-    // thoughts: ...
+    thoughts: mpsc::SyncSender<String>,
 }
 
 impl Philosopher {
