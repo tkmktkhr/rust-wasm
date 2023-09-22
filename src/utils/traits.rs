@@ -434,7 +434,6 @@ pub mod sample_trait {
 
   fn res(
     bool: bool,
-    // ) -> impl ResponseJson<User> + ResponseJson<NotFoundError> + ResponseJson<InternalError> {
   ) -> impl ResponseJson<User> + ResponseJson<NotFoundError> + ResponseJson<InternalError> {
     let user = User {
       id: 1,
@@ -449,37 +448,11 @@ pub mod sample_trait {
       false => Err(err_res),
     };
     let response = match backend {
-      Ok(user) => {
-        (StatusCode::OK, user);
-      }
-      Err(err) => {
-        (StatusCode::NOT_FOUND, err);
-      }
+      Ok(user) => Ok::<(StatusCode, User), _>((StatusCode::OK, user)),
+      Err(err) => Err::<_, (StatusCode, NotFoundError)>((StatusCode::NOT_FOUND, err)),
     };
 
-    // let err_res = JsonResponse::CustomError(CtmError::NotFoundError {
-    //   msg: "not found".to_string(),
-    // });
-    // let backend = match bool {
-    //   false => err_res,
-    //   true => JsonResponse::OkResponse(user),
-    // };
-
-    // let response = match bool {
-    //   true => {
-    //     let res = match backend {
-    //       Ok(user) => user,
-    //       Err(err) => err,
-    //       // JsonResponse::OkResponse(user) => user,
-    //       // JsonResponse::CustomError(err) => err,
-    //     };
-    //     println!("{:?}", res);
-    //     (StatusCode::OK, Json(res))
-    //   }
-    //   false => (StatusCode::NOT_FOUND, Json(err_res)),
-    // };
-
-    println!("{:?}", response);
+    println!("response : {:?}", response);
     response
   }
 
