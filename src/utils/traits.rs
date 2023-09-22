@@ -359,3 +359,133 @@ pub fn closure_sample() {
   let closure_annotated = |i: i32| -> i32 { i + outer_var };
   println!("closure_annotated: {}", closure_annotated(1));
 }
+
+pub mod sample_trait {
+  use reqwest::StatusCode;
+
+  #[derive(Debug, Clone, Default)]
+  pub struct User {
+    id: u32,
+    name: String,
+  }
+
+  #[derive(Debug, Clone, Copy, Default)]
+  pub struct Json<T>(pub T);
+
+  // #[derive(Debug, Clone, Default)]
+  // struct CustomError { msg: String }
+
+  // #[derive(Debug)]
+  // pub enum CtmError {
+  //   NotFoundError { msg: String },
+  //   InternalError { msg: String },
+  //   // NotFoundError(NotFoundError),
+  //   // InternalError(InternalError),
+  // }
+
+  // type ApiResponse<T> = (StatusCode, Json<JsonResponse<T>>);
+
+  // #[derive(Debug)]
+  // pub enum JsonResponse<T> {
+  //   OkResponse(T),
+  //   CustomError(CtmError),
+  // }
+
+  pub trait ResponseJson<T> {
+    fn res(code: StatusCode, body: T) -> (StatusCode, Json<T>);
+  }
+
+  impl<T, U> ResponseJson<T> for U
+  where
+    T: std::fmt::Debug,
+  {
+    fn res(code: StatusCode, body: T) -> (StatusCode, Json<T>) {
+      (code, Json(body))
+    }
+  }
+
+  // impl ResponseJson<User> for User {
+  //   fn res(code: StatusCode, body: User) -> (StatusCode, Json<User>) {
+  //     (code, Json(body))
+  //   }
+  // }
+
+  #[derive(Debug)]
+  pub struct NotFoundError {
+    msg: String,
+  }
+
+  // impl ResponseJson<NotFoundError> for NotFoundError {
+  //   fn res(code: StatusCode, body: NotFoundError) -> (StatusCode, Json<NotFoundError>) {
+  //     (code, Json(body))
+  //   }
+  // }
+
+  #[derive(Debug)]
+  pub struct InternalError {
+    msg: String,
+  }
+
+  // impl ResponseJson<InternalError> for InternalError {
+  //   fn res(code: StatusCode, body: InternalError) -> (StatusCode, Json<InternalError>) {
+  //     (code, Json(body))
+  //   }
+  // }
+
+  fn res(
+    bool: bool,
+    // ) -> impl ResponseJson<User> + ResponseJson<NotFoundError> + ResponseJson<InternalError> {
+  ) -> impl ResponseJson<User> + ResponseJson<NotFoundError> + ResponseJson<InternalError> {
+    let user = User {
+      id: 1,
+      name: "foo".to_string(),
+    };
+    let err_res = NotFoundError {
+      msg: "not found".to_string(),
+    };
+
+    let backend = match bool {
+      true => Ok(user),
+      false => Err(err_res),
+    };
+    let response = match backend {
+      Ok(user) => {
+        (StatusCode::OK, user);
+      }
+      Err(err) => {
+        (StatusCode::NOT_FOUND, err);
+      }
+    };
+
+    // let err_res = JsonResponse::CustomError(CtmError::NotFoundError {
+    //   msg: "not found".to_string(),
+    // });
+    // let backend = match bool {
+    //   false => err_res,
+    //   true => JsonResponse::OkResponse(user),
+    // };
+
+    // let response = match bool {
+    //   true => {
+    //     let res = match backend {
+    //       Ok(user) => user,
+    //       Err(err) => err,
+    //       // JsonResponse::OkResponse(user) => user,
+    //       // JsonResponse::CustomError(err) => err,
+    //     };
+    //     println!("{:?}", res);
+    //     (StatusCode::OK, Json(res))
+    //   }
+    //   false => (StatusCode::NOT_FOUND, Json(err_res)),
+    // };
+
+    println!("{:?}", response);
+    response
+  }
+
+  pub fn main(
+  ) -> impl ResponseJson<User> + ResponseJson<NotFoundError> + ResponseJson<InternalError> {
+    let bool = true;
+    res(bool)
+  }
+}
