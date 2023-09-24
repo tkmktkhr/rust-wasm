@@ -30,6 +30,9 @@ static PHILOSOPHERS: &[&str] =
 
 pub fn dining_philosophers() {
     // Create forks
+    let forks = (0..PHILOSOPHERS.len())
+        .map(|_| Arc::new(Mutex::new(Fork)))
+        .collect::<Vec<_>>();
 
     // Create philosophers
 
