@@ -404,33 +404,15 @@ pub mod sample_trait {
     }
   }
 
-  // impl ResponseJson<User> for User {
-  //   fn res(code: StatusCode, body: User) -> (StatusCode, Json<User>) {
-  //     (code, Json(body))
-  //   }
-  // }
-
   #[derive(Debug)]
   pub struct NotFoundError {
     msg: String,
   }
 
-  // impl ResponseJson<NotFoundError> for NotFoundError {
-  //   fn res(code: StatusCode, body: NotFoundError) -> (StatusCode, Json<NotFoundError>) {
-  //     (code, Json(body))
-  //   }
-  // }
-
   #[derive(Debug)]
   pub struct InternalError {
     msg: String,
   }
-
-  // impl ResponseJson<InternalError> for InternalError {
-  //   fn res(code: StatusCode, body: InternalError) -> (StatusCode, Json<InternalError>) {
-  //     (code, Json(body))
-  //   }
-  // }
 
   fn res(
     bool: bool,
