@@ -20,7 +20,6 @@ impl Philosopher {
   }
 
   fn eat(&self) {
-    // Pick up forks...
     println!("{} is eating...", &self.name);
     thread::sleep(Duration::from_millis(10));
   }
