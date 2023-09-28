@@ -28,15 +28,38 @@ impl Philosopher {
 static PHILOSOPHERS: &[&str] = &["Socrates", "Plato", "Aristotle", "Thales", "Pythagoras"];
 
 pub fn dining_philosophers() {
-  let (tx, rx) = mpsc::sync_channel::<i32>(10);
+  let (tx, rx) = mpsc::sync_channel::<String>(10);
   // Create forks
   let forks = (0..PHILOSOPHERS.len())
     .map(|_| Arc::new(Mutex::new(Fork)))
     .collect::<Vec<_>>();
 
-  // Create philosophers
+  for i in 0..forks.len() {
+    let tx = tx.clone();
+    let mut left_fork = Arc::clone(&forks[i]);
+    let mut right_fork = Arc::clone(&forks[(i + 1) % forks.len()]);
 
-  // Make each of them think and eat 100 times
+    // To avoid a deadlock, we have to break the symmetry
+    // somewhere. This will swap the forks without deinitializing
+    // either of them.
+    if i == forks.len() - 1 {
+      std::mem::swap(&mut left_fork, &mut right_fork);
+    }
+
+    let philosopher = Philosopher {
+      name: PHILOSOPHERS[i].to_string(),
+      thoughts: tx,
+      left_fork,
+      right_fork,
+    };
+
+    thread::spawn(move || {
+      for _ in 0..100 {
+        philosopher.eat();
+        philosopher.think();
+      }
+    });
+  }
 
   // Output their thoughts
 }
