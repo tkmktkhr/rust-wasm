@@ -61,5 +61,8 @@ pub fn dining_philosophers() {
     });
   }
 
-  // Output their thoughts
+  drop(tx);
+  for thought in rx {
+    println!("{thought}");
+  }
 }
