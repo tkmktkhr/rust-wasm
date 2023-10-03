@@ -54,7 +54,7 @@ pub fn dining_philosophers() {
     };
 
     thread::spawn(move || {
-      for _ in 0..100 {
+      for _ in 0..10 {
         philosopher.eat();
         philosopher.think();
       }
