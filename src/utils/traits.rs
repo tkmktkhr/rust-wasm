@@ -441,6 +441,7 @@ pub mod sample_trait {
   pub fn main(
   ) -> impl ResponseJson<User> + ResponseJson<NotFoundError> + ResponseJson<InternalError> {
     let bool = true;
+    // let bool = false;
     res(bool)
   }
 }
