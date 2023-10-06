@@ -19,6 +19,7 @@ fn main() {
   let slice: &[_] = &a[2..]; // _ i> i32
 
   println!("s: {slice:?}"); // :? is for debug.
+  utils::traits::sample_trait::main();
   // if you run functions, remove comment out.
   // sample();
   // type_inference();
