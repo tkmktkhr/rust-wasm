@@ -117,6 +117,7 @@ fn main() {
   // utils::exercises::array_for_loops::array_for_loops::output();
   // utils::exercises::simple_gui_library::simple_gui_library();
   // utils::exercises::polygon_struct::polygon_struct();
+  utils::exercises::dining_philosophers::dining_philosophers();
 }
 
 // Array, Vec, Slice

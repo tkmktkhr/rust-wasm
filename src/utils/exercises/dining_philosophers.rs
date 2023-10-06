@@ -35,8 +35,8 @@ pub fn dining_philosophers() {
     .collect::<Vec<_>>();
 
   for i in 0..forks.len() {
-    let tx = tx.clone();
-    let mut left_fork = Arc::clone(&forks[i]);
+    let tx = tx.clone(); // pass channel to threads.
+    let mut left_fork = Arc::clone(&forks[i]); // reference counter
     let mut right_fork = Arc::clone(&forks[(i + 1) % forks.len()]);
 
     // To avoid a deadlock, we have to break the symmetry
@@ -54,7 +54,7 @@ pub fn dining_philosophers() {
     };
 
     thread::spawn(move || {
-      for _ in 0..10 {
+      for _ in 0..2 {
         philosopher.eat();
         philosopher.think();
       }
