@@ -53,12 +53,14 @@ pub fn dining_philosophers() {
       right_fork,
     };
 
-    thread::spawn(move || {
+    let closure = move || {
       for _ in 0..2 {
         philosopher.eat();
         philosopher.think();
       }
-    });
+    };
+
+    thread::spawn(closure);
   }
 
   drop(tx);
