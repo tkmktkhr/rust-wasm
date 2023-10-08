@@ -15,3 +15,5 @@ Cargo.lock
 
 # VSCode extensions
 client.http
+
+.DS_Store
