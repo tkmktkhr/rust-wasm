@@ -392,14 +392,14 @@ pub mod sample_trait {
   // }
 
   pub trait ResponseJson<T> {
-    fn res(code: StatusCode, body: T) -> (StatusCode, Json<T>);
+    fn response(code: StatusCode, body: T) -> (StatusCode, Json<T>);
   }
 
   impl<T, U> ResponseJson<T> for U
   where
     T: std::fmt::Debug,
   {
-    fn res(code: StatusCode, body: T) -> (StatusCode, Json<T>) {
+    fn response(code: StatusCode, body: T) -> (StatusCode, Json<T>) {
       (code, Json(body))
     }
   }
@@ -442,6 +442,7 @@ pub mod sample_trait {
   ) -> impl ResponseJson<User> + ResponseJson<NotFoundError> + ResponseJson<InternalError> {
     let bool = true;
     // let bool = false;
-    res(bool)
+    let obj = res(bool);
+    obj
   }
 }
