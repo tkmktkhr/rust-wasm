@@ -20,6 +20,7 @@ fn main() {
 
   println!("s: {slice:?}"); // :? is for debug.
   utils::traits::sample_trait::main();
+  utils::exercises::multi_threaded_link_checker::link_checker();
   // if you run functions, remove comment out.
   // sample();
   // type_inference();
