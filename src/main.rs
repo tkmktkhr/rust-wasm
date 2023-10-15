@@ -19,8 +19,7 @@ fn main() {
   let slice: &[_] = &a[2..]; // _ i> i32
 
   println!("s: {slice:?}"); // :? is for debug.
-  utils::traits::sample_trait::main();
-  utils::exercises::multi_threaded_link_checker::link_checker();
+  // utils::traits::sample_trait::main();
   // if you run functions, remove comment out.
   // sample();
   // type_inference();
@@ -118,7 +117,8 @@ fn main() {
   // utils::exercises::array_for_loops::array_for_loops::output();
   // utils::exercises::simple_gui_library::simple_gui_library();
   // utils::exercises::polygon_struct::polygon_struct();
-  utils::exercises::dining_philosophers::dining_philosophers();
+  // utils::exercises::dining_philosophers::dining_philosophers();
+  utils::exercises::multi_threaded_link_checker::link_checker();
 }
 
 // Array, Vec, Slice
